@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "siteId": "nba4qqfzp0bdrwbz",
+  "name": "kingbowen-site",
+  "kind": "react-vite",
+  "devCommand": "vite",
+  "buildCommand": "vite build",
+  "outputDir": "dist",
+  "entry": "index.html",
+  "createdBy": "accio-site-builder",
+  "createdAt": "2026-09-29T15:40:46.911Z",
+  "siteIdSyncStatus": "synced",
+  "installedAt": "2026-09-29T15:48:19.838Z",
+  "databaseUrl": ""
+}
