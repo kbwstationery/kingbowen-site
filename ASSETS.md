@@ -6,6 +6,7 @@
 | Factory Gate | `/assets/images/factory-gate.jpg` | user-provided (`01工厂图片/1-工厂大门.jpg`) | Factory Facility Showcase | ready |
 | Factory Building | `/assets/images/factory-building.jpg` | user-provided (`01工厂图片/2-建筑物.JPG`) | About Us & Scale Overview | ready |
 | 4th Floor Frame Fitting Hall | `/assets/images/factory-workshop-1.jpg` | user-provided (`01工厂图片/车间1.jpg`) | 4th Floor Frame Fitting & Component Assembly | ready |
+| Whiteboard Panel Cutting | `/assets/images/factory-material-cutting.jpg` | user-provided (`3.Material Cutting.png`) | Precision Whiteboard Steel Sheet & Panel Cutting | ready |
 | Workshop Lamination | `/assets/images/factory-workshop-2.jpg` | user-provided (`01工厂图片/车间2.jpg`) | Engineering & Honeycomb Pressing | ready |
 | Workshop Assembly | `/assets/images/factory-workshop-3.png` | user-provided (`01工厂图片/车间-3.png`) | Assembly & Inspection | ready |
 | Raw Material Warehouse | `/assets/images/factory-warehouse-raw.png` | user-provided (`01工厂图片/原材料仓库1.png`) | Raw Material Warehouse & Bulk Storage | ready |

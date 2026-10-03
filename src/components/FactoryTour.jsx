@@ -30,12 +30,12 @@ export default function FactoryTour() {
       desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
     },
     {
-      id: 'workshop-2',
-      title: 'Continuous PUR Panel Lamination',
-      subtitle: 'Honeycomb Core Hot-Melt Bonding',
-      image: '/assets/images/factory-workshop-2.jpg',
-      tag: 'Lamination Line',
-      desc: 'State-of-the-art continuous gluing and hydraulic pressing system that guarantees dead-flat whiteboard surfaces free from warping or delamination.'
+      id: 'cutting',
+      title: 'Whiteboard Panel Precision Cutting',
+      subtitle: 'Steel Sheet & Panel Sizing Line',
+      image: '/assets/images/factory-material-cutting.jpg',
+      tag: 'Extrusion & Cutting',
+      desc: 'Precision industrial shearing line for whiteboard lacquered steel surface panels and backing sheets, calibrated for zero-burr dimensional cutting.'
     },
     {
       id: 'warehouse-semi',
@@ -44,6 +44,14 @@ export default function FactoryTour() {
       image: '/assets/images/factory-assembly-2.jpg',
       tag: 'Semi-Finished Warehouse',
       desc: 'Dedicated 2nd floor warehouse staging packaging raw materials, protective cartons, and semi-finished whiteboard panels ready for frame fitting.'
+    },
+    {
+      id: 'workshop-2',
+      title: 'Continuous PUR Panel Lamination',
+      subtitle: 'Honeycomb Core Hot-Melt Bonding',
+      image: '/assets/images/factory-workshop-2.jpg',
+      tag: 'Lamination Line',
+      desc: 'State-of-the-art continuous gluing and hydraulic pressing system that guarantees dead-flat whiteboard surfaces free from warping or delamination.'
     },
     {
       id: 'assembly-2',
