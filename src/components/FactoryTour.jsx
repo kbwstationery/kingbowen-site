@@ -22,20 +22,20 @@ export default function FactoryTour() {
       desc: 'Purpose-built industrial plant housing automated raw material warehouses, precision extrusion workshops, and multi-tier assembly lines.'
     },
     {
-      id: 'warehouse-raw',
-      title: 'Raw Material Coil Warehouse',
-      subtitle: 'Heavy-Duty Steel & Lacquer Coils',
-      image: '/assets/images/factory-warehouse-raw.png',
-      tag: 'Raw Materials',
-      desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
-    },
-    {
       id: 'panel-fabrication',
       title: 'Raw Material Panel Fabrication Workshop',
       subtitle: 'Substrate Board Production & Leveling Line',
       image: '/assets/images/factory-assembly-1.jpg',
       tag: 'Panel Fabrication',
       desc: 'Dedicated production workshop for raw material panel core fabrication, steel surface preparation, and structural backing board processing.'
+    },
+    {
+      id: 'warehouse-raw',
+      title: 'Raw Material Coil Warehouse',
+      subtitle: 'Heavy-Duty Steel & Lacquer Coils',
+      image: '/assets/images/factory-warehouse-raw.png',
+      tag: 'Raw Materials',
+      desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
     },
     {
       id: 'cutting',
@@ -56,26 +56,27 @@ export default function FactoryTour() {
     {
       id: 'workshop-2',
       title: 'Continuous PUR Panel Lamination',
-      subtitle: 'Honeycomb Core Hot-Melt Bonding',
+      subtitle: 'Automated Adhesive Spraying & Roller Gluing Equipment',
       image: '/assets/images/factory-workshop-3.png',
-      tag: 'Lamination Line',
-      desc: 'State-of-the-art continuous gluing and hydraulic pressing system that guarantees dead-flat whiteboard surfaces free from warping or delamination.'
+      video: '/assets/videos/honeycomb-gluing.mp4',
+      tag: 'Automated Gluing',
+      desc: 'Equipped with automated adhesive spraying and honeycomb core roller-gluing machinery, ensuring uniform PUR bonding for high-flatness whiteboard sandwich panels.'
     },
     {
       id: 'assembly-2',
-      title: 'Component Assembly & Fitting Hall',
-      subtitle: '4th Floor Assembly Division',
+      title: 'Standardized Assembly Workshop',
+      subtitle: 'Clean & Safe Workplace Layout',
       image: '/assets/images/factory-workshop-1.jpg',
-      tag: 'Frame Fitting',
-      desc: 'Systematic assembly benches where technicians attach ergonomic locking levers, 360-degree silent casters, and protective safety corners.'
+      tag: 'Assembly Workshop',
+      desc: 'Maintained under 5S visual management standards and compliant with BSCI European occupational health and safety regulations.'
     },
     {
       id: 'assembly-1',
       title: 'Final Quality Inspection & Packing',
-      subtitle: '1st Floor Export Staging Line',
+      subtitle: '4th Floor Quality Inspection & Export Packaging Line',
       image: '/assets/images/factory-workshop-2.jpg',
       tag: 'Final QC & Packing',
-      desc: 'Every completed unit passes surface wipe-testing and edge inspection before being packaged in drop-tested 5-layer corrugated cartons.'
+      desc: '4th floor quality inspection and export packaging staging line. Every completed unit passes surface wipe-testing and edge inspection before being packaged in drop-tested 5-layer corrugated cartons.'
     }
   ];
 
@@ -125,10 +126,16 @@ export default function FactoryTour() {
                   <div className="absolute top-2.5 left-2.5 bg-primary/80 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded">
                     {item.tag}
                   </div>
+                  {item.video && (
+                    <div className="absolute top-2.5 right-2.5 bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded shadow flex items-center gap-1">
+                      <Film className="w-3 h-3" />
+                      <span>Video</span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                     <span className="px-3 py-1 bg-black/60 rounded text-xs font-medium flex items-center gap-1">
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>View Full Resolution</span>
+                      {item.video ? <Film className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                      <span>{item.video ? 'Watch Process Video' : 'View Full Resolution'}</span>
                     </span>
                   </div>
                 </div>
@@ -147,7 +154,7 @@ export default function FactoryTour() {
               </div>
 
               <div className="px-4 pb-3 pt-0 text-[11px] text-accent font-semibold flex items-center gap-1">
-                <span>Inspect Facility Details</span>
+                <span>{item.video ? 'Watch Roller-Gluing Video' : 'Inspect Facility Details'}</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
@@ -201,11 +208,23 @@ export default function FactoryTour() {
             </button>
 
             <div className="max-h-[75vh] bg-slate-900 flex items-center justify-center overflow-hidden">
-              <img
-                src={activePhoto.image}
-                alt={activePhoto.title}
-                className="max-h-[75vh] w-auto object-contain"
-              />
+              {activePhoto.video ? (
+                <video
+                  src={activePhoto.video}
+                  poster={activePhoto.image}
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  className="max-h-[75vh] w-full object-contain"
+                />
+              ) : (
+                <img
+                  src={activePhoto.image}
+                  alt={activePhoto.title}
+                  className="max-h-[75vh] w-auto object-contain"
+                />
+              )}
             </div>
 
             <div className="p-6 bg-white">
@@ -220,6 +239,12 @@ export default function FactoryTour() {
               <p className="text-sm text-secondary leading-relaxed">
                 {activePhoto.desc}
               </p>
+              {activePhoto.video && (
+                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded bg-amber-50 text-amber-900 text-xs font-semibold border border-amber-200">
+                  <Film className="w-4 h-4 text-amber-600" />
+                  <span>On-Site Process Video: Automated Honeycomb Core Roller-Gluing & Lamination</span>
+                </div>
+              )}
             </div>
           </div>
         </div>

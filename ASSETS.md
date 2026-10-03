@@ -21,4 +21,5 @@
 | Glass Door Showcase | `/assets/images/glass-door-showcase.jpg` | user-provided (Alibaba store) | Product Matrix: Display Showcase | ready |
 | Round Base Flipchart | `/assets/images/round-base-flipchart.jpg` | user-provided (Alibaba store) | Product Matrix: Movable Flipchart | ready |
 | Factory Tour Video | `/assets/videos/factory-tour.mp4` | user-provided (`02工厂视频/Alibaba认证工厂视频.mp4`) | Hero Section Main Video Showcase | ready |
+| Honeycomb Gluing Video | `/assets/videos/honeycomb-gluing.mp4` | user-provided (`滚胶-蜂窝板夹层.mp4`) | Factory Tour: PUR Lamination & Honeycomb Roller Gluing Video | ready |
 | Height-Adjustable Mobile Whiteboard | `/assets/images/kbw-x7.jpg` | user-provided (`attachment 1.jpg`) | Product Matrix: KBW-X7 Height Adjustable Board | ready |
