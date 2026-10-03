@@ -30,6 +30,14 @@ export default function FactoryTour() {
       desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
     },
     {
+      id: 'panel-fabrication',
+      title: 'Raw Material Panel Fabrication Workshop',
+      subtitle: 'Substrate Board Production & Leveling Line',
+      image: '/assets/images/factory-assembly-1.jpg',
+      tag: 'Panel Fabrication',
+      desc: 'Dedicated production workshop for raw material panel core fabrication, steel surface preparation, and structural backing board processing.'
+    },
+    {
       id: 'cutting',
       title: 'Whiteboard Panel Precision Cutting',
       subtitle: 'Steel Sheet & Panel Sizing Line',
@@ -49,7 +57,7 @@ export default function FactoryTour() {
       id: 'workshop-2',
       title: 'Continuous PUR Panel Lamination',
       subtitle: 'Honeycomb Core Hot-Melt Bonding',
-      image: '/assets/images/factory-workshop-2.jpg',
+      image: '/assets/images/factory-workshop-3.png',
       tag: 'Lamination Line',
       desc: 'State-of-the-art continuous gluing and hydraulic pressing system that guarantees dead-flat whiteboard surfaces free from warping or delamination.'
     },
@@ -65,17 +73,9 @@ export default function FactoryTour() {
       id: 'assembly-1',
       title: 'Final Quality Inspection & Packing',
       subtitle: '1st Floor Export Staging Line',
-      image: '/assets/images/factory-assembly-1.jpg',
+      image: '/assets/images/factory-workshop-2.jpg',
       tag: 'Final QC & Packing',
       desc: 'Every completed unit passes surface wipe-testing and edge inspection before being packaged in drop-tested 5-layer corrugated cartons.'
-    },
-    {
-      id: 'workshop-3',
-      title: 'Standardized Assembly Workshop',
-      subtitle: 'Clean & Safe Workplace Layout',
-      image: '/assets/images/factory-workshop-3.png',
-      tag: 'Assembly Workshop',
-      desc: 'Maintained under 5S visual management standards and compliant with BSCI European occupational health and safety regulations.'
     }
   ];
 
