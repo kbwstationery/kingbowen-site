@@ -40,23 +40,24 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       }
     },
     {
-      id: 'kbw-hero-large',
+      id: 'kbw-x7',
       category: 'mobile',
       categoryName: 'Mobile Rolling Board',
-      name: 'Heavy-Duty Commercial Mobile Whiteboard with Dual Lock Bar',
-      code: 'KBW-ROLL-HD',
-      image: '/assets/images/hero-mobile-whiteboard.jpg',
+      name: 'Height-Adjustable Commercial Mobile Whiteboard with Dual Lock Bar',
+      code: 'KBW-X7',
+      image: '/assets/images/kbw-x7.jpg',
       moq: '100 pcs',
       leadTime: '20-25 Days',
       features: [
+        'Stepless Height-Adjustable Frame (48"x60" / Multi-Size)',
         'Reinforced Crossbeam for High-Stability Commercial Use',
         'Reversible Dual Surfaces (Lined Planner + Blank)',
-        'Scratch-Resistant Electrostatic Baked Finish',
         'Heavy-Duty Industrial Wheels for Carpet & Hardwood'
       ],
       specs: {
-        'Standard Dimensions': '120x90 cm, 150x100 cm, 180x100 cm',
+        'Standard Dimensions': '48"x60" (120x150 cm), 120x90 cm, 150x100 cm',
         'Frame Thickness': '18mm Heavy-Gauge Anodized Aluminum',
+        'Adjustment Mechanism': 'Vertical sliding track with dual quick-lock knobs',
         'Wheel Spec': 'Industrial 2-inch dual-wheel mute casters with locks',
         'Testing Standards': 'EN 71-3, REACH non-toxic compliance'
       }
