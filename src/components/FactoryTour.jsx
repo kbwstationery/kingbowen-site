@@ -30,14 +30,6 @@ export default function FactoryTour() {
       desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
     },
     {
-      id: 'workshop-1',
-      title: 'Precision Aluminum Cutting & CNC',
-      subtitle: 'Extrusion & Beveling Workshop',
-      image: '/assets/images/factory-workshop-1.jpg',
-      tag: 'Extrusion & Cutting',
-      desc: 'Equipped with multi-axis automated saws delivering 45-degree corner joints with zero burrs and strict tolerance adherence.'
-    },
-    {
       id: 'workshop-2',
       title: 'Continuous PUR Panel Lamination',
       subtitle: 'Honeycomb Core Hot-Melt Bonding',
@@ -46,10 +38,18 @@ export default function FactoryTour() {
       desc: 'State-of-the-art continuous gluing and hydraulic pressing system that guarantees dead-flat whiteboard surfaces free from warping or delamination.'
     },
     {
+      id: 'warehouse-semi',
+      title: 'Semi-finished Goods Warehouse',
+      subtitle: '2nd Floor Packaging & Semi-Finished Storage',
+      image: '/assets/images/factory-assembly-2.jpg',
+      tag: 'Semi-Finished Warehouse',
+      desc: 'Dedicated 2nd floor warehouse staging packaging raw materials, protective cartons, and semi-finished whiteboard panels ready for frame fitting.'
+    },
+    {
       id: 'assembly-2',
       title: 'Component Assembly & Fitting Hall',
-      subtitle: '2nd Floor Assembly Division',
-      image: '/assets/images/factory-assembly-2.jpg',
+      subtitle: '4th Floor Assembly Division',
+      image: '/assets/images/factory-workshop-1.jpg',
       tag: 'Frame Fitting',
       desc: 'Systematic assembly benches where technicians attach ergonomic locking levers, 360-degree silent casters, and protective safety corners.'
     },
