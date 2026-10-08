@@ -6,11 +6,11 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   const [selectedSpecProduct, setSelectedSpecProduct] = useState(null);
 
   const categories = [
-    { id: 'all', name: 'All Categories (9)' },
+    { id: 'all', name: 'All Categories (17)' },
     { id: 'mobile', name: 'Mobile Rolling Boards' },
     { id: 'flipchart', name: 'Flip Chart & Easels' },
     { id: 'wall', name: 'Wall-Mounted Boards' },
-    { id: 'glass', name: 'Glass & LED Note Boards' },
+    { id: 'glass', name: 'Glass & Desktop Boards' },
     { id: 'notice', name: 'Notice Cases & Showcases' },
   ];
 
@@ -224,6 +224,190 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
         'Glass Material': '3.2mm shatterproof automotive-grade tempered glass',
         'Applications': 'Schools, hotels, corporate lobbies, hospitals, community centers',
         'Security': 'Tamper-resistant lock system preventing unauthorized memo removal'
+      }
+    },
+    {
+      id: 'kbw-mini-desktop-pack',
+      category: 'glass',
+      categoryName: 'Desktop & Portable Board',
+      name: '11"x8" Double-Sided Portable Desktop Whiteboard with Stand (2-Pack)',
+      code: 'KBW-MINI-1108',
+      image: '/assets/images/product-mini-desktop-whiteboard.jpg',
+      moq: '100 sets (Retail 2-Pack ready)',
+      leadTime: '15-20 Days',
+      features: [
+        '360° Adjustable Aluminum Stand for Versatile Angle Viewing',
+        'Double-Sided Magnetic Dry-Erase Surface with Zero-Ghosting Coating',
+        'Compact 11" x 8" Portable Size for Desks, Students & Daily Task Planning',
+        'Complete Kit: Includes 2 Lapboards, Dry-Erase Markers & Magnetic Eraser'
+      ],
+      specs: {
+        'Standard Dimensions': '11" x 8" (28 x 21 cm) per board',
+        'Panel Core': 'Double-sided multi-layer coated magnetic dry-erase plate',
+        'Stand Bracket': '360-degree rotating silver aluminum alloy desktop stand',
+        'Included Set': '2 boards, 2 dry-erase markers, 2 mini magnetic erasers, 4 anti-slip pads',
+        'Packaging': 'Compact e-commerce mail-order box with protective bubble cushioning'
+      }
+    },
+    {
+      id: 'kbw-glass-calculator-desk',
+      category: 'glass',
+      categoryName: 'Glass & Desktop Board',
+      name: 'Tempered Glass Desktop Whiteboard with Built-in Calculator & Keyboard Stand',
+      code: 'KBW-GLASS-CALC',
+      image: '/assets/images/product-glass-calculator-desk.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      features: [
+        'Integrated 12-Digit Solar & Battery Desktop Calculator',
+        '4mm High-Clarity Tempered Glass Writing Surface with Scratch Resistance',
+        'Hidden Slide-Out Drawer Chassis for Markers, Pens & Paperclips',
+        'Angled Keyboard Stand Profile Fits Seamlessly in Front of Monitors'
+      ],
+      specs: {
+        'Standard Dimensions': '18" x 8" x 2" (45 x 20 x 5 cm)',
+        'Writing Surface': '4mm heavy-gauge ultra-clear tempered glass with polished pencil edge',
+        'Integrated Feature': 'Solar + button-battery dual-power 12-digit electronic calculator',
+        'Storage Compartment': 'Multi-divided sliding ABS chassis with cable channel pass-through',
+        'Packaging': 'Premium color retail packaging with drop-tested EPE molded foam'
+      }
+    },
+    {
+      id: 'kbw-notice-cork-outdoor',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Weatherproof Outdoor Enclosed Cork Bulletin Board with Locking Door',
+      code: 'KBW-ENC-3624-C',
+      image: '/assets/images/product-notice-cork-outdoor.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      features: [
+        'Weatherproof Outdoor Design with EPDM Gasket Moisture Seal',
+        'High-Density Self-Healing Natural Cork Recovers from Pinholes',
+        'Shatter-Resistant Polycarbonate Door with Cylinder Lock & 2 Keys',
+        'Reinforced Heavy-Gauge Matte Black Aluminum Alloy Casing'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 4 A4 sheet capacity',
+        'Board Core': '100% natural premium dense self-healing cork board',
+        'Door Construction': 'Heavy-duty UV-stabilized shatter-resistant optical window',
+        'Locking Mechanism': 'Zinc-alloy cylinder lock with 2 security keys',
+        'Mounting Kit': 'Full stainless concealed anchor bolts and wall bracket hardware'
+      }
+    },
+    {
+      id: 'kbw-notice-grey-felt',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Weatherproof Enclosed Display Case with Grey Acoustic Felt Backing',
+      code: 'KBW-ENC-3624-F',
+      image: '/assets/images/product-notice-grey-felt.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      features: [
+        'Premium Dense Grey Felt Interior Absorbs Acoustic Noise & Holds Push Pins',
+        'Outdoor Weatherproof Gasket Seal Resists Rain, Wind & Moisture Intrusion',
+        'Lockable Shatterproof Tempered Glass Door for Public Safety & Anti-Tampering',
+        'Anodized Black Aluminum Extrusion with Concealed Wall Fasteners'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" (90 x 60 cm) / Accommodates up to 6 x A4 sheets',
+        'Interior Surface': 'Acoustic-grade non-fading grey felt over high-density backing',
+        'Door Glazing': '3.2mm architectural automotive tempered safety glass',
+        'Frame Profile': 'Corrosion-resistant powder-coated black extruded aluminum',
+        'Weatherproofing': 'Perimeter rubber compression seal with drainage weep holes'
+      }
+    },
+    {
+      id: 'kbw-notice-slideout-whiteboard',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Enclosed Bulletin Board with Hidden Slide-Out Magnetic Whiteboard',
+      code: 'KBW-ENC-SLIDE-3624',
+      image: '/assets/images/product-notice-slideout-whiteboard.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      features: [
+        'Dual Functionality: 36"x24" Enclosed Noticeboard + Hidden Slide-Out Whiteboard',
+        'Slide-Out 36"x22" Magnetic Dry-Erase Panel Doubles Active Brainstorming Area',
+        'Brushed Metal Aluminum Frame with Clear Polycarbonate Locking Window',
+        'Complete Commercial Set: Magnets, Push Pins, Eraser & Wall Mounting System'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" closed / extends to 58" total working width',
+        'Bulletin Area': 'Self-healing dense bulletin surface with key-lock protective door',
+        'Slide-Out Board': 'Magnetic dry-erase steel surface on precision side-glide tracks',
+        'Frame Material': 'Architectural brushed silver anodized aluminum profile',
+        'Included Accessories': 'Assorted push pins, dry-erase board magnets, magnetic eraser'
+      }
+    },
+    {
+      id: 'kbw-notice-silver-cork',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Lockable Outdoor Enclosed Bulletin Board with Natural Cork (Silver Frame)',
+      code: 'KBW-ENC-3624-ALUM',
+      image: '/assets/images/product-notice-silver-cork.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      features: [
+        'Satin Silver Anodized Aluminum Housing with Heavy Weather-Resistant Seals',
+        '100% Natural Self-Healing Resilient Cork Holds Pins Firmly',
+        'Lockable Swing-Open Glass Door with Dual Security Keys',
+        'Engineered for Apartment Entrances, Churches, Schools & Commercial Buildings'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 5 x A4 capacity',
+        'Bulletin Core': 'High-density natural Portuguese cork with anti-warp composite backing',
+        'Door Construction': 'Tempered safety glass door on continuous stainless piano hinge',
+        'Frame Finish': 'Commercial satin silver anodized aluminum with rounded corner safety caps',
+        'Installation': 'Internal pre-drilled holes for concealed, tamperproof wall anchoring'
+      }
+    },
+    {
+      id: 'kbw-notice-led-illuminated',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Concealed LED Illuminated Enclosed Bulletin Board with Glass Door',
+      code: 'KBW-LED-ENC-3624',
+      image: '/assets/images/product-notice-led-illuminated.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      features: [
+        'Concealed Energy-Efficient LED Lighting for 24/7 Day & Night High Visibility',
+        'Lockable Tempered Glass Door with Weatherproof Aluminum Housing',
+        'Uniform Edge-Lit Light Diffusion Eliminates Hotspots on Displayed Posters',
+        'Safe Low-Voltage 12V DC Power Supply with Waterproof Cable Pass-Through'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" (90 x 60 cm)',
+        'Lighting System': 'Concealed IP65 waterproof perimeter LED strip (6000K daylight white)',
+        'Power Supply': 'UL/CE certified 12V DC adapter with waterproof screw connector',
+        'Door & Lock': 'Hinged tempered safety glass door with dual cylinder security keys',
+        'Interior Surface': 'Pin-friendly dense bulletin board with even light distribution'
+      }
+    },
+    {
+      id: 'kbw-notice-acrylic-door',
+      category: 'notice',
+      categoryName: 'Notice Case & Showcase',
+      name: '36"x24" Wall-Mounted Indoor Noticeboard with Clear Acrylic Locking Door (5 x A4)',
+      code: 'KBW-ENC-3624-ACRYLIC',
+      image: '/assets/images/product-notice-acrylic-door.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      features: [
+        'Lightweight Shatterproof Clear Optical Acrylic Locking Swing Door',
+        'High-Density Natural Cork Surface Displays Up to 5 Standard A4 Documents',
+        'Slim-Profile Aluminum Alloy Frame Ideal for High-Traffic School & Office Hallways',
+        'Tamper-Resistant Key Lock Prevents Unauthorized Flyer or Notice Removal'
+      ],
+      specs: {
+        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 5 x A4 capacity',
+        'Door Material': '3mm high-impact optical-grade clear acrylic',
+        'Core Surface': 'Resilient self-healing natural cork board with rigid MDF infill',
+        'Lock Spec': 'Cam lock cylinder with 2 matching nickel-plated keys',
+        'Frame Material': 'Satin matte silver anodized aluminum alloy'
       }
     }
   ];

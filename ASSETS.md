@@ -24,6 +24,14 @@
 | Honeycomb Gluing Video | `/assets/videos/honeycomb-gluing.mp4` | user-provided (`滚胶-蜂窝板夹层.mp4`) | Factory Tour: PUR Lamination & Honeycomb Roller Gluing Video | ready |
 | Height-Adjustable Mobile Whiteboard | `/assets/images/kbw-x7.jpg` | user-provided (`attachment 1.jpg`) | Product Matrix: KBW-X7 Height Adjustable Board | ready |
 | 20" Light-Up Acrylic LED Board | `/assets/images/product-led-acrylic-board.jpg` | user-provided (`Product Image`) | Product Matrix: KBW-LED-1612 LED Note Board | ready |
+| Portable Desktop Whiteboard 2-Pack | `/assets/images/product-mini-desktop-whiteboard.jpg` | user-provided (`Amazon ASIN B0F1THZNK3`) | Product Matrix: KBW-MINI-1108 Desktop Board | ready |
+| Glass Whiteboard with Calculator | `/assets/images/product-glass-calculator-desk.jpg` | user-provided (`Amazon ASIN B0F1Z9CKC4`) | Product Matrix: KBW-GLASS-CALC Glass Board | ready |
+| Outdoor Enclosed Cork Bulletin Board | `/assets/images/product-notice-cork-outdoor.jpg` | user-provided (`Amazon ASIN B0DSNVLH35`) | Product Matrix: KBW-ENC-3624-C Notice Case | ready |
+| Enclosed Display Case Grey Felt | `/assets/images/product-notice-grey-felt.jpg` | user-provided (`Amazon ASIN B0CYLY6C7C`) | Product Matrix: KBW-ENC-3624-F Notice Case | ready |
+| Enclosed Board with Slideout Whiteboard | `/assets/images/product-notice-slideout-whiteboard.jpg` | user-provided (`Amazon ASIN B0CN7T26DL`) | Product Matrix: KBW-ENC-SLIDE-3624 Notice Case | ready |
+| Outdoor Enclosed Silver Cork Board | `/assets/images/product-notice-silver-cork.jpg` | user-provided (`Amazon ASIN B0CYLC4FDK`) | Product Matrix: KBW-ENC-3624-ALUM Notice Case | ready |
+| Concealed LED Enclosed Bulletin Board | `/assets/images/product-notice-led-illuminated.jpg` | user-provided (`Amazon ASIN B0FLDGXZQ9`) | Product Matrix: KBW-LED-ENC-3624 Notice Case | ready |
+| Indoor Acrylic Door Cork Noticeboard | `/assets/images/product-notice-acrylic-door.jpg` | user-provided (`Amazon ASIN B0DBPFBFW8`) | Product Matrix: KBW-ENC-3624-ACRYLIC Notice Case | ready |
 | Meeting Collaboration Scene | `/assets/images/scenario-meeting-collaboration.png` | imageGenerate | Hero and Use Scenarios: Meeting Collaboration | ready |
 | Classroom Teaching Scene | `/assets/images/scenario-classroom-teaching.png` | imageGenerate | Use Scenarios: Classroom Teaching | ready |
 | Mobile Whiteboard Discussion Scene | `/assets/images/scenario-mobile-discussion.png` | imageGenerate | Use Scenarios: Mobile Board Discussion | ready |
