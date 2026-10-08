@@ -159,25 +159,26 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       id: 'kbw-led-acrylic-1612',
       category: 'glass',
       categoryName: 'LED Acrylic & Message Board',
-      name: '20" Light-Up Acrylic LED Dry-Erase Board with 7 RGB Modes',
-      code: 'KBW-LED-1612 (ASIN: B0GVJBB35V)',
+      name: '20" Large LED Drawing Board & 16"x12" Light-Up Acrylic Dry Erase Board',
+      code: 'KBW-LED-1612',
       image: '/assets/images/product-led-acrylic-board.jpg',
       moq: '50 pcs (OEM custom branding & packaging)',
       leadTime: '15-20 Days',
       features: [
-        '7 Vibrant RGB Colors & 6 Dynamic Flashing Light Modes',
-        'Optical Shatter-Resistant Acrylic Surface with Polished Edges',
-        'Dual Placement: Desktop Invisible Stands & Stainless Hanging Chain',
-        'Multi-Purpose: Creative Drawing, Office Memo, Café & Retail Menu Sign'
+        'Dynamic Lighting with 7 Vibrant RGB Colors & 6 Lighting Modes',
+        'Shatter-Resistant Optical Acrylic Panel with Polished Edges',
+        'Dual Placement: Desktop Invisible Stands & Hanging Chain Kit',
+        'Includes 7 Liquid Chalk Pens, Cleaning Cloth & Spray Bottle'
       ],
       specs: {
         'Standard Dimensions': '16" x 12" (40 x 30 cm) / 20" Diagonal Screen',
-        'Panel Material': 'High-clarity optical grade scratch-resistant acrylic',
-        'Illumination': 'Side-lit edge LED strip, 7 RGB colors + 6 flashing effects',
-        'Mounting & Placement': 'Dual transparent acrylic easel stands + hanging hooks & chain',
-        'Included Accessories': '7-color liquid chalk pens, micro-fiber cleaning cloth, USB cable',
-        'Power Supply': 'Low-voltage 5V USB powered with in-line switch controller',
-        'Certifications': 'CE, RoHS, FCC compliant'
+        'Panel Material': 'Premium optical shatter-resistant acrylic with smooth polished edges',
+        'Lighting Modes': '7 vibrant RGB color options & 6 dynamic light sequences with blinking control',
+        'Multi-Purpose Application': 'Office memo board, home message sign, café/retail menu board, night light, kids creative drawing pad',
+        'Dual Mounting Setup': '2 invisible acrylic desktop stands + stainless hanging chain and hooks',
+        'Included Accessories': '7 vibrant liquid chalk pens, 2 microfiber cleaning cloths, spray bottle, USB power cable',
+        'Power Supply': 'Low-voltage 5V USB powered with in-line controller buttons',
+        'OEM / ODM Customization': 'Custom logo printing, bespoke gift box packaging, custom sizes and lighting colors'
       }
     },
     {
