@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, ArrowRight, Layers, Sliders, X, ShieldAlert, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Layers, Sliders, X } from 'lucide-react';
 
 export default function ProductMatrix({ onSelectProductForRfq }) {
   const [activeTab, setActiveTab] = useState('all');
@@ -217,22 +217,20 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   };
 
   return (
-    <section id="products" className="py-16 md:py-24 bg-surface-sunken border-b border-border" data-component="product-matrix">
+      <section id="products" className="py-14 md:py-24 bg-white border-b border-border" data-component="product-matrix">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent-text mb-2">
-              <Layers className="w-4 h-4" />
-              <span>Full Product Lineup</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
-              Export Product Matrix & Engineering Specifications
-            </h2>
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent mb-3">
+            <Layers className="w-4 h-4" />
+            <span>Product collection</span>
           </div>
-          <p className="text-secondary text-sm max-w-lg leading-relaxed">
-            All models are production-ready for volume supply with flexible OEM/ODM options. Customizable dimensions, frame finishes, custom branding, and drop-tested mail-order packaging.
+          <h2 className="text-3xl sm:text-4xl font-semibold text-primary tracking-tight">
+            Whiteboards for every space
+          </h2>
+          <p className="text-secondary text-sm mt-3">
+            Compare mobile, wall-mounted, flip chart, glass and notice-board models.
           </p>
         </div>
 
@@ -254,11 +252,11 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
         </div>
 
         {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
           {filteredProducts.map((product) => (
-            <div
+            <article
               key={product.id}
-              className="bg-white rounded-lg border border-border hover:border-slate-400 hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              className="bg-white border border-border hover:border-slate-400 transition-colors duration-200 flex flex-col justify-between overflow-hidden group"
             >
               <div>
                 {/* Image Container with Badges */}
@@ -293,15 +291,9 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
                     </span>
                   </div>
 
-                  {/* Feature Highlights */}
-                  <ul className="space-y-1 mb-4 text-[11px] text-secondary">
-                    {product.features.slice(0, 3).map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-1.5 line-clamp-1">
-                        <Check className="w-3 h-3 text-accent flex-shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-xs text-secondary line-clamp-1 mb-4">
+                    {product.features[0]}
+                  </p>
                 </div>
               </div>
 
@@ -325,7 +317,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
                 </button>
               </div>
 
-            </div>
+            </article>
           ))}
         </div>
 

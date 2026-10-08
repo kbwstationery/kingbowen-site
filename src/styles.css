@@ -3,70 +3,59 @@
 @tailwind utilities;
 
 :root {
-  /* HSL Values for Tailwind CSS Variable Mapping */
-  --background: 210 40% 98%;      /* #F8FAFC */
-  --foreground: 222 47% 11%;      /* #0F172A */
-  --card: 0 0% 100%;             /* #FFFFFF */
-  --card-foreground: 222 47% 11%; /* #0F172A */
-  --popover: 0 0% 100%;          /* #FFFFFF */
-  --popover-foreground: 222 47% 11%;
-  --primary: 222 47% 11%;        /* #0F172A Deep Slate */
-  --primary-foreground: 210 40% 98%;
-  --secondary: 215 25% 35%;      /* #475569 Slate Grey */
-  --secondary-foreground: 210 40% 98%;
-  --muted: 214 32% 91%;          /* #E2E8F0 */
-  --muted-foreground: 215 16% 47%;/* #64748B */
-  --accent: 221 83% 53%;         /* #2563EB Industrial Tech Blue */
+  --background: 60 9% 98%;
+  --foreground: 195 21% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 195 21% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 195 21% 12%;
+  --primary: 195 21% 12%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 195 6% 35%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 120 4% 95%;
+  --muted-foreground: 195 6% 35%;
+  --accent: 193 68% 28%;
   --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214 32% 91%;         /* #E2E8F0 */
-  --input: 214 32% 91%;
-  --ring: 221 83% 53%;
-  --radius: 0.25rem;             /* 4px crisp precision */
+  --destructive: 4 71% 40%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 160 4% 86%;
+  --input: 160 4% 86%;
+  --ring: 193 68% 28%;
+  --radius: 0.25rem;
 }
 
+html { scroll-behavior: smooth; }
+
 @layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; }
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: #0F172A;
-    background-color: #F8FAFC;
+    @apply text-foreground;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #fbfbfa;
   }
-
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Archivo', 'Inter', system-ui, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     letter-spacing: -0.02em;
-    font-weight: 600;
   }
-
-  /* Tabular numbers for engineering specs and metrics */
-  .tabular-nums {
-    font-variant-numeric: tabular-nums;
+  a, button, input, textarea, select { outline-offset: 2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #17647a;
   }
 }
 
 @layer utilities {
-  .bg-primary-soft {
-    background-color: #1E293B;
-  }
-  .bg-surface-sunken {
-    background-color: #F1F5F9;
-  }
-  .border-hairline {
-    border-color: #E2E8F0;
-  }
-  .border-hairline-dark {
-    border-color: rgba(255, 255, 255, 0.12);
-  }
-  .text-accent-signal {
-    color: #0284C7;
-  }
-  .text-accent-on-dark {
-    color: #38BDF8;
+  .bg-primary-soft { background-color: #334247; }
+  .bg-surface-sunken { background-color: #f2f3f1; }
+  .text-accent-signal { color: #17647a; }
+  .text-accent-on-dark { color: #d7eef2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
