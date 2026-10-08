@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowRight, Layers, Sliders, X, Image as ImageIcon } from 'lucide-react';
+import { ArrowRight, Layers, Sliders, X } from 'lucide-react';
 
 export default function ProductMatrix({ onSelectProductForRfq }) {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedSpecProduct, setSelectedSpecProduct] = useState(null);
-  const [selectedVariants, setSelectedVariants] = useState({});
-  const [activeDetailIdx, setActiveDetailIdx] = useState(0);
 
   // Official categories directly from http://www.gd-jinbowen.com/protype.php
   const categories = [
@@ -619,7 +617,6 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
 
   const handleOpenSpecs = (product) => {
     setSelectedSpecProduct(product);
-    setActiveDetailIdx(0);
   };
 
   return (
@@ -659,133 +656,77 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
 
         {/* Product Cards Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
-          {filteredProducts.map((product) => {
-            const activeVariantIdx = selectedVariants[product.id] ?? 0;
-            const currentVariant = product.variants?.[activeVariantIdx];
-            const currentDisplayImage = currentVariant?.image || product.image;
-
-            return (
-              <article
-                key={product.id}
-                className="bg-white border border-border hover:border-slate-400 transition-colors duration-200 flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
-                  {/* Image Container with Badges */}
-                  <div className="relative aspect-[4/3] bg-slate-50 overflow-hidden flex items-center justify-center p-3 border-b border-border">
-                    <img
-                      src={currentDisplayImage}
-                      alt={product.name}
-                      className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-[10px] font-bold text-primary px-2 py-0.5 rounded border border-border">
-                      {product.categoryName}
-                    </div>
-                    <div className="absolute bottom-2.5 right-2.5 bg-primary/80 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
-                      {product.code}
-                    </div>
+          {filteredProducts.map((product) => (
+            <article
+              key={product.id}
+              className="bg-white border border-border hover:border-slate-400 transition-colors duration-200 flex flex-col justify-between overflow-hidden group"
+            >
+              <div>
+                {/* Image Container with Badges */}
+                <div className="relative aspect-[4/3] bg-slate-50 overflow-hidden flex items-center justify-center p-3 border-b border-border">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-[10px] font-bold text-primary px-2 py-0.5 rounded border border-border">
+                    {product.categoryName}
                   </div>
-
-                  {/* Content */}
-                  <div className="p-3 sm:p-4">
-                    <h3 className="text-xs sm:text-sm font-bold text-primary group-hover:text-accent transition-colors line-clamp-2 mb-2">
-                      {product.name}
-                    </h3>
-
-                    {/* Color Options Selector */}
-                    {product.variants && product.variants.length > 0 && (
-                      <div className="my-2.5 bg-slate-50/80 p-2 rounded border border-slate-200/80">
-                        <div className="text-[11px] text-slate-600 mb-1.5 flex items-center justify-between">
-                          <span className="font-medium text-slate-700 truncate mr-1">
-                            {product.variantLabel || 'Color / Finish'}:{' '}
-                            <span className="font-bold text-accent">
-                              {currentVariant?.name}
-                            </span>
-                          </span>
-                          <span className="text-[9px] text-slate-400 font-mono flex-shrink-0">
-                            {product.variants.length} opts
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5">
-                          {product.variants.map((v, vIdx) => {
-                            const isSelected = activeVariantIdx === vIdx;
-                            return (
-                              <button
-                                key={vIdx}
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setSelectedVariants((prev) => ({ ...prev, [product.id]: vIdx }));
-                                }}
-                                className={`flex-shrink-0 rounded border p-0.5 transition-all bg-white flex flex-col items-center justify-between cursor-pointer ${
-                                  isSelected
-                                    ? 'border-accent ring-2 ring-accent/30 shadow-xs'
-                                    : 'border-slate-200 hover:border-slate-400 opacity-80 hover:opacity-100'
-                                }`}
-                                style={{ width: '46px', height: '52px' }}
-                                title={v.name}
-                              >
-                                <div className="w-full h-7 bg-slate-100/60 overflow-hidden rounded-xs flex items-center justify-center">
-                                  <img
-                                    src={v.thumbnail || v.image}
-                                    alt={v.name}
-                                    className="w-full h-full object-contain"
-                                  />
-                                </div>
-                                <span className="text-[8.5px] font-semibold text-slate-700 truncate w-full text-center px-0.5 leading-none">
-                                  {v.badge || v.name.split(' ')[0]}
-                                </span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Commercial Terms Badges */}
-                    <div className="flex flex-wrap items-center gap-1.5 mb-2.5 text-[11px]">
-                      <span className="bg-slate-100 text-secondary px-1.5 py-0.5 rounded font-medium">
-                        MOQ: {product.moq.split(' ')[0]}
-                      </span>
-                      <span className="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded font-medium">
-                        {product.leadTime}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-secondary line-clamp-1 mb-2">
-                      {product.features[0]}
-                    </p>
+                  <div className="absolute bottom-2.5 right-2.5 bg-primary/80 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
+                    {product.code}
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="p-3 sm:p-4 pt-0 border-t border-slate-100 grid grid-cols-2 gap-2 mt-auto">
-                  <button
-                    type="button"
-                    onClick={() => handleOpenSpecs(product)}
-                    className="w-full py-2 px-2 bg-slate-50 hover:bg-slate-100 text-primary text-[11px] font-semibold rounded border border-border text-center transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                  >
-                    <Sliders className="w-3 h-3 text-slate-500" />
-                    <span>Specs</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleSelect(product)}
-                    className="w-full py-2 px-2 bg-accent hover:bg-accent-hover text-white text-[11px] font-semibold rounded text-center transition-all flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
-                  >
-                    <span>Select RFQ</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </button>
-                </div>
+                {/* Content */}
+                <div className="p-3 sm:p-4">
+                  <h3 className="text-xs sm:text-sm font-bold text-primary group-hover:text-accent transition-colors line-clamp-2 mb-2">
+                    {product.name}
+                  </h3>
 
-              </article>
-            );
-          })}
+                  {/* Commercial Terms Badges */}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-2.5 text-[11px]">
+                    <span className="bg-slate-100 text-secondary px-1.5 py-0.5 rounded font-medium">
+                      MOQ: {product.moq.split(' ')[0]}
+                    </span>
+                    <span className="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded font-medium">
+                      {product.leadTime}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-secondary line-clamp-1 mb-2">
+                    {product.features[0]}
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="p-3 sm:p-4 pt-0 border-t border-slate-100 grid grid-cols-2 gap-2 mt-auto">
+                <button
+                  type="button"
+                  onClick={() => handleOpenSpecs(product)}
+                  className="w-full py-2 px-2 bg-slate-50 hover:bg-slate-100 text-primary text-[11px] font-semibold rounded border border-border text-center transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                >
+                  <Sliders className="w-3 h-3 text-slate-500" />
+                  <span>Specs</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSelect(product)}
+                  className="w-full py-2 px-2 bg-accent hover:bg-accent-hover text-white text-[11px] font-semibold rounded text-center transition-all flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                >
+                  <span>Select RFQ</span>
+                  <ArrowRight className="w-3 h-3" />
+                </button>
+              </div>
+
+            </article>
+          ))}
         </div>
 
       </div>
 
-      {/* Engineering Spec Sheet & Detail Gallery Modal */}
+      {/* Engineering Spec Sheet Modal */}
       {selectedSpecProduct && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-border shadow-2xl p-5 sm:p-7 relative">
@@ -803,80 +744,6 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
             <h3 className="text-lg sm:text-2xl font-bold text-primary mb-5">
               {selectedSpecProduct.name}
             </h3>
-
-            {/* Product Engineering Details & Installation Gallery */}
-            {selectedSpecProduct.detailGallery && selectedSpecProduct.detailGallery.length > 0 && (
-              <div className="mb-6 bg-slate-50 border border-border rounded-lg p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-xs font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
-                    <ImageIcon className="w-3.5 h-3.5 text-accent" />
-                    <span>Product Details & Installation Methods (工艺细节与安装方式)</span>
-                  </h4>
-                  <span className="text-[11px] text-slate-500 font-medium">
-                    Click tabs below to inspect
-                  </span>
-                </div>
-
-                {/* Featured Detail View */}
-                {selectedSpecProduct.detailGallery[activeDetailIdx] && (
-                  <div className="bg-white border border-border rounded-md overflow-hidden mb-3">
-                    <div className="relative aspect-[16/9] sm:aspect-[2/1] bg-slate-900 flex items-center justify-center p-2">
-                      <img
-                        src={selectedSpecProduct.detailGallery[activeDetailIdx].image}
-                        alt={selectedSpecProduct.detailGallery[activeDetailIdx].title}
-                        className="max-h-full w-auto object-contain"
-                      />
-                      <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-xs text-white text-[11px] font-semibold px-2.5 py-1 rounded">
-                        {selectedSpecProduct.detailGallery[activeDetailIdx].title}
-                      </div>
-                    </div>
-                    <div className="p-3 bg-white border-t border-slate-100">
-                      <p className="text-xs text-secondary leading-relaxed">
-                        <strong className="text-primary font-semibold">
-                          {selectedSpecProduct.detailGallery[activeDetailIdx].title}:
-                        </strong>{' '}
-                        {selectedSpecProduct.detailGallery[activeDetailIdx].desc}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Detail Thumbnails Selector */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {selectedSpecProduct.detailGallery.map((det, dIdx) => {
-                    const isSelected = activeDetailIdx === dIdx;
-                    return (
-                      <button
-                        key={dIdx}
-                        type="button"
-                        onClick={() => setActiveDetailIdx(dIdx)}
-                        className={`p-1.5 rounded border text-left transition-all bg-white flex items-center gap-2 cursor-pointer ${
-                          isSelected
-                            ? 'border-accent ring-2 ring-accent/30 shadow-2xs'
-                            : 'border-border hover:border-slate-400 opacity-80 hover:opacity-100'
-                        }`}
-                      >
-                        <div className="w-10 h-10 rounded bg-slate-100 flex-shrink-0 overflow-hidden flex items-center justify-center p-0.5">
-                          <img
-                            src={det.image}
-                            alt={det.title}
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="text-[10px] sm:text-[11px] font-bold text-primary truncate leading-tight">
-                            {det.title.split('(')[0].trim()}
-                          </div>
-                          <div className="text-[9px] text-slate-500 truncate mt-0.5">
-                            Inspect view
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
 
             {/* Spec Table */}
             <div className="border border-border rounded-lg overflow-hidden mb-6">
