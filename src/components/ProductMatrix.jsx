@@ -6,7 +6,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   const [selectedSpecProduct, setSelectedSpecProduct] = useState(null);
 
   const categories = [
-    { id: 'all', name: 'All Categories (15)' },
+    { id: 'all', name: 'All Categories (16)' },
     { id: 'mobile', name: 'Mobile Rolling Boards' },
     { id: 'flipchart', name: 'Flip Chart & Easels' },
     { id: 'wall', name: 'Wall-Mounted Boards' },
@@ -247,6 +247,29 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
         'Stand Bracket': '360-degree rotating silver aluminum alloy desktop stand',
         'Included Set': '2 boards, 2 dry-erase markers, 2 mini magnetic erasers, 4 anti-slip pads',
         'Packaging': 'Compact e-commerce mail-order box with protective bubble cushioning'
+      }
+    },
+    {
+      id: 'kbw-lapboard-portable',
+      category: 'glass',
+      categoryName: 'Desktop & Portable Lapboard',
+      name: '11"x8" Double-Sided Magnetic Portable Mini Whiteboard Lapboard',
+      code: 'KBW-LAP-1108',
+      image: '/assets/images/product-mini-lapboard-portable.jpg',
+      moq: '100 pcs (Custom OEM printing & color retail packaging)',
+      leadTime: '15-20 Days',
+      features: [
+        'Double-Sided Multi-Layer Coated Magnetic Whiteboard Writing Surfaces',
+        'Smooth Scratch-Resistant Surface Erases Cleanly with Zero Ghosting or Stains',
+        'Ultra-Lightweight & Slim Profile for Students, Classrooms, Desks & Lockers',
+        'Includes Magnetic Dry-Erase Pen with Cap Eraser & Snap-On Pen Clip'
+      ],
+      specs: {
+        'Standard Dimensions': '11" x 8" (A4: 28 x 21 cm)',
+        'Board Core': 'Double-sided magnetic lacquered steel surface with rigid lightweight core',
+        'Mounting & Use': 'Handheld lapboard, magnetic adherence to metal desks/fridges, horizontal or vertical wall hanging',
+        'Included Accessories': '1 fine-tip dry-erase marker with eraser cap, 1 detachable pen clip',
+        'Packaging': 'Individual retail sleeve or multi-pack master export carton'
       }
     },
     {

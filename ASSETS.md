@@ -25,6 +25,7 @@
 | Height-Adjustable Mobile Whiteboard | `/assets/images/kbw-x7.jpg` | user-provided (`attachment 1.jpg`) | Product Matrix: KBW-X7 Height Adjustable Board | ready |
 | 20" Light-Up Acrylic LED Board | `/assets/images/product-led-acrylic-board.jpg` | user-provided (`Product Image`) | Product Matrix: KBW-LED-1612 LED Note Board | ready |
 | Portable Desktop Whiteboard 2-Pack | `/assets/images/product-mini-desktop-whiteboard.jpg` | user-provided (`Amazon ASIN B0F1THZNK3`) | Product Matrix: KBW-MINI-1108 Desktop Board | ready |
+| Portable Lapboard Whiteboard | `/assets/images/product-mini-lapboard-portable.jpg` | user-provided (`Amazon ASIN B0F1TK34CH`) | Product Matrix: KBW-LAP-1108 Portable Lapboard | ready |
 | Outdoor Enclosed Cork Bulletin Board | `/assets/images/product-notice-cork-outdoor.jpg` | user-provided (`Amazon ASIN B0DSNVLH35`) | Product Matrix: KBW-ENC-3624-C Notice Case | ready |
 | Outdoor Enclosed Cork Glass Board | `/assets/images/product-notice-silver-cork.jpg` | user-provided (`Amazon ASIN B0CYLC4FDK`) | Product Matrix: KBW-ENC-3624-F Notice Case | ready |
 | Enclosed Board with Slideout Whiteboard | `/assets/images/product-notice-slideout-whiteboard.jpg` | user-provided (`Amazon ASIN B0CN7T26DL`) | Product Matrix: KBW-ENC-SLIDE-3624 Notice Case | ready |
