@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Layers, Sliders, X, Image as ImageIcon, ZoomIn, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Layers, Sliders, X, Image as ImageIcon } from 'lucide-react';
 
 export default function ProductMatrix({ onSelectProductForRfq }) {
   const [activeTab, setActiveTab] = useState('all');
@@ -7,82 +7,108 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   const [selectedVariants, setSelectedVariants] = useState({});
   const [activeDetailIdx, setActiveDetailIdx] = useState(0);
 
+  // Official categories directly from http://www.gd-jinbowen.com/protype.php
   const categories = [
-    { id: 'all', name: 'All Categories (16)' },
-    { id: 'mobile', name: 'Mobile Rolling Boards' },
-    { id: 'flipchart', name: 'Flip Chart & Easels' },
-    { id: 'wall', name: 'Wall-Mounted Boards' },
-    { id: 'glass', name: 'Glass & Desktop Boards' },
-    { id: 'notice', name: 'Notice Cases & Showcases' },
+    { id: 'all', name: 'All Products (16)' },
+    { id: 'easel', name: 'Whiteboard Easel' },
+    { id: 'flipchart', name: 'Flip Chart Stand' },
+    { id: 'magnetic-board', name: 'Magnetic Writing Board' },
+    { id: 'notice-board', name: 'Notice Board' },
+    { id: 'showcase', name: 'Showcase' },
+    { id: 'glass-board', name: 'Magnetic Glass Writing Board' },
+    { id: 'desktop-iron', name: 'Iron Desktop Writing Board' },
   ];
 
-  // Shared Engineering Detail Galleries (Sourced directly from Kingbowen factory specs & Alibaba links)
-  const whiteboardDetailGallery = [
+  // Official Engineering Detail Galleries from Jinbowen factory specifications & ueditor archive
+  const easelDetailGallery = [
     {
-      title: 'ABS Plastic Safety Corners (防撞包角特写)',
-      image: '/assets/images/detail-abs-corner.jpg',
-      desc: 'Injection-molded rounded ABS plastic corners with concealed mounting holes for student safety and edge protection.'
+      title: 'Adjustable Width & Brake Casters (支架宽度调节与脚轮锁止)',
+      image: '/assets/images/official-detail-bwe6-1.jpg',
+      desc: 'Fits whiteboard length from 60cm to 90cm. Features heavy-duty mobile casters with individual foot brake locks.'
     },
     {
-      title: 'Flush Wall Mounting Installation (隐藏式挂钩安装)',
-      image: '/assets/images/detail-mounting-installation.jpg',
-      desc: 'Heavy-duty concealed brackets and expansion anchors supporting quick horizontal or vertical flush wall installation.'
+      title: '360° Board Flipping Mechanism (双面翻转旋钮锁紧)',
+      image: '/assets/images/official-detail-bwe6-2.jpg',
+      desc: 'Spring-loaded rotation locking bar allows quick 360-degree board turning and firm angle locking.'
     },
     {
-      title: 'Frame Section & Detachable Pen Tray (边框与可拆笔托)',
-      image: '/assets/images/detail-whiteboard-corner-hook.jpg',
-      desc: '1.2mm thick anodized aluminum extrusion with full-length slide-in marker tray and protective end caps.'
+      title: 'ABS Safety Corner Cap & Pen Tray (ABS防撞圆角与一体笔托)',
+      image: '/assets/images/official-detail-bwv8-1.jpg',
+      desc: 'Injection-molded rounded ABS corner caps with concealed screws and full-width aluminum pen tray.'
     },
     {
-      title: 'Frame Cross-Section & Honeycomb Core (边框型材剖面)',
-      image: '/assets/images/detail-frame-spec.jpg',
-      desc: '15mm structural aluminum profile bonded with high-density anti-warp honeycomb core for permanent surface flatness.'
+      title: 'Anodized Aluminum Frame Profile (加厚铝合金型材切面)',
+      image: '/assets/images/official-detail-bwv8-2.jpg',
+      desc: '15mm heavy-gauge anodized aluminum profile with rust-proof galvanized steel backing sheet.'
     }
   ];
 
-  const mobileDetailGallery = [
+  const flipchartDetailGallery = [
     {
-      title: '360° Mute Casters & Foot Brake (脚轮与刹车锁紧)',
+      title: 'Universal Paper Clamp (顶置万用夹纸器)',
+      image: '/assets/images/official-detail-bwe7-1.jpg',
+      desc: 'Spring-loaded top clamp with adjustable hanging hooks compatible with all standard flip chart paper pads.'
+    },
+    {
+      title: 'Telescopic Height Adjuster (伸缩升降高度调节)',
       image: '/assets/images/detail-mobile-stand.jpg',
-      desc: 'Heavy-duty 2-inch dual-wheel nylon mute casters with individual foot pedal locks for effortless mobility and stability.'
+      desc: 'Quick-release ergonomic locking levers supporting stepless height adjustment from 105cm to 195cm.'
     },
     {
-      title: 'ABS Safety Corner & Locking Bar (包角与旋转锁)',
-      image: '/assets/images/detail-whiteboard-corner-hook.jpg',
-      desc: 'Impact-resistant rounded safety corners with precision spring-loaded board flipping and locking mechanism.'
+      title: 'Mobile Round / Tripod Base (移动轮盘/三脚架结构)',
+      image: '/assets/images/official-detail-bwe6-1.jpg',
+      desc: 'Heavy cast circular base with 5 mute lockable casters or lightweight foldable telescopic aluminum tripod.'
     },
     {
-      title: 'Tubular Steel Stand Assembly (钢架组装与连接结构)',
-      image: '/assets/images/detail-mounting-installation.jpg',
-      desc: 'Reinforced crossbeam with heavy-gauge steel stand, electrostatic baked anti-scratch finish, and quick-assemble hardware.'
-    },
-    {
-      title: 'Frame Profile & Double-Sided Core (双面型材结构)',
-      image: '/assets/images/detail-frame-spec.jpg',
-      desc: 'Heavy-gauge anodized aluminum perimeter frame housing double-sided baked magnetic steel dry-erase panels.'
+      title: 'Magnetic Dry-Erase Panel (磁性烤漆白板面板)',
+      image: '/assets/images/official-detail-bwv8-2.jpg',
+      desc: 'Multi-layer high-durability coated magnetic steel panel, easily wiped clean with zero ghosting.'
     }
   ];
 
-  const noticeDetailGallery = [
+  const boardDetailGallery = [
     {
-      title: 'Cylinder Security Lock & Keys (双钥匙安全锁具特写)',
-      image: '/assets/images/detail-corner-lock.jpg',
-      desc: 'Precision zinc-alloy cylinder cam lock with 2 nickel-plated security keys to prevent unauthorized flyer tampering.'
+      title: 'ABS Plastic Safety Corners (防撞圆弧包角特写)',
+      image: '/assets/images/official-detail-bwv8-1.jpg',
+      desc: 'Injection-molded rounded ABS corners with concealed screw covers for school and office impact safety.'
     },
     {
-      title: 'Concealed Wall Anchor Installation (隐藏式墙面打孔安装)',
+      title: 'Galvanized Zinc Steel Backing (镀锌防锈钢背板)',
+      image: '/assets/images/official-detail-bwv8-2.jpg',
+      desc: 'Galvanized anti-corrosion zinc backing sheet bonded with 7-layer rigid core for permanent flatness.'
+    },
+    {
+      title: 'Flush Wall Mounting Installation (隐形角码挂扣安装方式)',
       image: '/assets/images/detail-mounting-installation.jpg',
-      desc: 'Pre-drilled internal corner mounting holes allow concealed anchor bolt fastening completely flush to masonry or drywall.'
+      desc: 'Includes 2 to 4 wall-mounting hangers and masonry expansion screws supporting horizontal or vertical hanging.'
     },
     {
-      title: 'Weatherproof Gasket & Aluminum Casing (耐候密封胶条与铝框)',
+      title: 'Detachable Marker Pen Tray (可拆卸铝合金笔槽)',
+      image: '/assets/images/detail-whiteboard-corner-hook.jpg',
+      desc: 'Slide-in anodized aluminum pen holder with smooth protective edge caps.'
+    }
+  ];
+
+  const showcaseDetailGallery = [
+    {
+      title: 'Cylinder Security Lock & Keys (双钥匙锁具特写)',
+      image: '/assets/images/official-detail-bwa1-1.jpg',
+      desc: 'Precision zinc-alloy cylinder cam lock with 2 nickel-plated security keys to prevent unauthorized tampering.'
+    },
+    {
+      title: 'Sliding / Casement Door Frame (平开与推拉玻璃门结构)',
+      image: '/assets/images/official-detail-bwa1-2.jpg',
+      desc: 'Available with 1, 2, or 3 door leaves in casement or sliding configurations with automotive tempered glass.'
+    },
+    {
+      title: 'Weatherproof EPDM Rubber Seals (耐候密封条与排水设计)',
       image: '/assets/images/detail-frame-spec.jpg',
-      desc: 'EPDM perimeter compression rubber seals block rain, dust, and moisture for durable outdoor and corridor performance.'
+      desc: 'Perimeter rubber compression gasket seals out rain, dust, and outdoor moisture.'
     },
     {
-      title: 'Continuous Stainless Piano Hinge (不锈钢连续平开铰链)',
-      image: '/assets/images/detail-showcase-lock.png',
-      desc: 'Full-length heavy-duty piano hinge ensures smooth door swinging and long-term structural alignment without sagging.'
+      title: 'Concealed Wall Anchor Installation (隐蔽式打孔固定)',
+      image: '/assets/images/detail-mounting-installation.jpg',
+      desc: 'Pre-drilled internal anchor points for tamper-proof wall mounting in public corridors.'
     }
   ];
 
@@ -93,484 +119,486 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       desc: 'Precision bevel-polished safety corners and edges ensure safe tactile handling on office and student desks.'
     },
     {
-      title: 'Desktop Invisible Stand & Hardware (桌面隐形支架特写)',
+      title: 'Desktop Invisible Stand & Hardware (桌面支架特写)',
       image: '/assets/images/detail-mounting-installation.jpg',
-      desc: 'High-clarity acrylic easel stands and non-slip silicone pads provide stable, vibration-free desk positioning.'
+      desc: 'Heavy-gauge iron or acrylic desktop stand with non-slip silicone pads for stable positioning.'
     },
     {
-      title: 'Accessories & Pen Clip Setup (配件与笔夹布局)',
+      title: 'Storage & Accessories Layout (配件收纳布局)',
       image: '/assets/images/detail-whiteboard-corner-hook.jpg',
       desc: 'Includes magnetic dry-erase liquid chalk pens, microfiber cloths, and integrated organizers.'
     }
   ];
 
+  // Official Products Scraped from http://www.gd-jinbowen.com/protype.php
   const products = [
+    // 1. Whiteboard Easel (sort1=2)
     {
-      id: 'kbw-rolling-pro',
-      category: 'mobile',
-      categoryName: 'Mobile Rolling Board',
-      name: 'Double-Sided Mobile Rolling Magnetic Whiteboard',
-      code: 'KBW-4836-M',
-      image: '/assets/images/double-sided-rolling-whiteboard.jpg',
-      moq: '50-100 pcs (Trial batch accepted)',
-      leadTime: '20-25 Days',
-      variantLabel: 'Stand & Frame Finish',
+      id: 'bw-e6',
+      category: 'easel',
+      categoryName: 'Whiteboard Easel',
+      name: 'BW-E6 Whiteboard Easel (Mobile Double-Sided Rolling Whiteboard)',
+      code: 'BW-E6',
+      image: '/assets/images/official-bw-e6.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Easel Stand Color',
       variants: [
-        { name: 'White Stand / Silver Frame', image: '/assets/images/double-sided-rolling-whiteboard.jpg', badge: 'White' },
-        { name: 'Black Stand / Black Frame', image: '/assets/images/hero-mobile-whiteboard.jpg', badge: 'Black' }
+        { name: 'White Stand / Whiteboard', image: '/assets/images/official-bw-e6.jpg', badge: 'White' },
+        { name: 'Black Stand / Whiteboard', image: '/assets/images/hero-mobile-whiteboard.jpg', badge: 'Black' },
+        { name: 'Silver Grey Stand', image: '/assets/images/double-sided-rolling-whiteboard.jpg', badge: 'Silver' }
       ],
-      detailGallery: mobileDetailGallery,
+      detailGallery: easelDetailGallery,
       features: [
-        '360° Rotatable with Heavy-Duty Lock Mechanism',
-        'Honeycomb Anti-Warping Core Backing',
-        'Four 360° Mute Casters with Foot Brakes',
-        'Integrated Full-Length Aluminum Pen Tray'
+        'Fits Whiteboard Length from 60cm to 90cm (Width Adjustable)',
+        '360° Rotatable Double-Sided Board with Precision Angle Lock',
+        'Available Easel Colors: Black, White, Silver Grey',
+        'Mobile Structure with 4 Smooth-Glide Foot-Braked Casters'
       ],
       specs: {
-        'Standard Dimensions': '48"x36", 48"x32", 60"x40", 72"x48"',
-        'Frame Material': '15mm Anodized Matte Silver Aluminum Alloy',
-        'Board Surface': 'Double-sided 3-layer baked magnetic dry-erase enamel',
-        'Core Infill': 'High-density rigid paper honeycomb (anti-dent)',
-        'Base Structure': 'Heavy gauge steel tubing with anti-scratch powder coating',
-        'Packaging': 'Drop-tested 5-layer export master carton with EPS corner protectors'
+        'Compatible Board Size': 'Fits 60cm to 90cm whiteboard lengths',
+        'Easel Frame Material': 'Heavy-gauge tubular steel with electrostatic powder coating',
+        'Adjustment': 'Width adjustable shelf with quick-lock tightening knobs',
+        'Available Colors': 'Black, White, Silver Grey',
+        'Packing Specification': '1 pc/box, 5 pcs/ctn (Meas: 82.5x15x40cm = 0.050 CBM)'
       }
     },
     {
-      id: 'kbw-x7',
-      category: 'mobile',
-      categoryName: 'Mobile Rolling Board',
-      name: 'Height-Adjustable Commercial Mobile Whiteboard with Dual Lock Bar',
-      code: 'KBW-X7',
-      image: '/assets/images/kbw-x7.jpg',
-      moq: '100 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Stand & Height System',
+      id: 'bw-e3',
+      category: 'easel',
+      categoryName: 'Whiteboard Easel',
+      name: 'BW-E3 Whiteboard Easel (Heavy-Duty Mobile Stand)',
+      code: 'BW-E3',
+      image: '/assets/images/official-bw-e3.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Stand Finish',
       variants: [
-        { name: 'White Stand / Dual Locking Knobs', image: '/assets/images/kbw-x7.jpg', badge: 'White' },
-        { name: 'Heavy Industrial Silver Frame', image: '/assets/images/double-sided-rolling-whiteboard.jpg', badge: 'Silver' }
+        { name: 'Satin Silver Stand', image: '/assets/images/official-bw-e3.jpg', badge: 'Silver' },
+        { name: 'Industrial Black Stand', image: '/assets/images/hero-mobile-whiteboard.jpg', badge: 'Black' }
       ],
-      detailGallery: mobileDetailGallery,
+      detailGallery: easelDetailGallery,
       features: [
-        'Stepless Height-Adjustable Frame (48"x60" / Multi-Size)',
-        'Reinforced Crossbeam for High-Stability Commercial Use',
-        'Scratch-Resistant Electrostatic Baked Finish',
-        'Heavy-Duty Industrial Wheels for Carpet & Hardwood'
+        'Heavy-Duty Mobile Rolling Easel with Lockable Casters',
+        'Universal Support for Single & Double-Sided Writing Boards',
+        'Reinforced Crossbar Architecture for High-Stability Use',
+        'Quick-Assembly Knock-Down Structure for Compact Export Packing'
       ],
       specs: {
-        'Standard Dimensions': '48"x60" (120x150 cm), 120x90 cm, 150x100 cm',
-        'Frame Thickness': '18mm Heavy-Gauge Anodized Aluminum',
-        'Adjustment Mechanism': 'Vertical sliding track with dual quick-lock knobs',
-        'Wheel Spec': 'Industrial 2-inch dual-wheel mute casters with locks',
-        'Testing Standards': 'EN 71-3, REACH non-toxic compliance'
+        'Compatible Lengths': 'Supports 90cm to 150cm whiteboard lengths',
+        'Wheel Spec': 'Industrial 2-inch dual-wheel mute casters with individual locks',
+        'Finish': 'Scratch-resistant baked enamel powder coating',
+        'Accessories': 'Full-width aluminum pen tray and mounting brackets included'
       }
     },
+
+    // 2. Flip Chart Stand (sort1=1)
     {
-      id: 'kbw-flip-easel',
+      id: 'bw-e7',
       category: 'flipchart',
-      categoryName: 'Flip Chart & Easel',
-      name: 'Professional Presentation Flip Chart Easel with Telescopic Tripod',
-      code: 'KBW-FC-70100',
-      image: '/assets/images/flip-chart-easel-stand.jpg',
+      categoryName: 'Flip Chart Stand',
+      name: 'BW-E7 Flip Chart Stand (Mobile Lockable Presentation Stand)',
+      code: 'BW-E7',
+      image: '/assets/images/official-bw-e7.jpg',
       moq: '50 pcs',
       leadTime: '20-25 Days',
-      variantLabel: 'Stand & Leg Finish',
+      variantLabel: 'Stand Option',
       variants: [
-        { name: 'Silver Telescopic Tripod Legs', image: '/assets/images/flip-chart-easel-stand.jpg', badge: 'Silver' },
-        { name: 'Black Powder-Coated Stand', image: '/assets/images/round-base-flipchart.jpg', badge: 'Black' }
+        { name: 'Silver Mobile Flip Chart Stand', image: '/assets/images/official-bw-e7.jpg', badge: 'Silver' },
+        { name: 'Black Stand Edition', image: '/assets/images/flip-chart-easel-stand.jpg', badge: 'Black' }
       ],
-      detailGallery: mobileDetailGallery,
+      detailGallery: flipchartDetailGallery,
       features: [
-        'Universal Pad Clamp for Standard Flip Chart Paper Pads',
-        'Height Adjustable Legs (105cm - 185cm)',
-        'Full-Width Pen Tray Attached to Base Frame',
-        'Lightweight Aluminum Construction for Easy Transport'
+        'Fits Whiteboard Length from 90cm to 240cm',
+        'Mobile and Lockable with 5 Silent Heavy-Duty Wheels',
+        'Universal Spring-Loaded Top Clamp for Presentation Paper Pads',
+        'Full-Length Aluminum Pen Tray Attached to Base Frame'
       ],
       specs: {
-        'Board Size': '70 x 100 cm (approx. 28" x 40")',
-        'Height Range': '105 cm to 185 cm stepless adjustment',
-        'Clamp Design': 'Spring-loaded steel clamp with adjustable hanging hooks',
-        'Leg Mechanism': 'Quick-release lever locks on all 3 telescopic legs',
+        'Board Range': 'Fits length of whiteboard from 90cm to 240cm',
+        'Mobility': 'Mobile base with 5 omnidirectional locking casters',
+        'Clamp System': 'Spring-loaded paper clamp with adjustable hanging hooks',
+        'Packing': '1 pc/box, 5 pcs/ctn (Knock-down flat packing)'
+      }
+    },
+    {
+      id: 'bw-e10',
+      category: 'flipchart',
+      categoryName: 'Flip Chart Stand',
+      name: 'BW-E10 Flip Chart Stand (360° Rotatable Mobile Board)',
+      code: 'BW-E10',
+      image: '/assets/images/official-bw-e10.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      variantLabel: 'Base Option',
+      variants: [
+        { name: 'Round Mobile Base (Silver)', image: '/assets/images/official-bw-e10.jpg', badge: 'Silver' },
+        { name: 'Executive Black Base', image: '/assets/images/round-base-flipchart.jpg', badge: 'Black' }
+      ],
+      detailGallery: flipchartDetailGallery,
+      features: [
+        'Plate Belt 360° Rotation Function with Angle Locking',
+        'Mobile Base with 5 Lockable Mute Wheels',
+        'Includes 1pc Pen Tray, 1pc Eraser and 3pcs Magnets',
+        'Length 90-240cm, Height Customizable per Customer Request'
+      ],
+      specs: {
+        'Rotation': 'Full 360-degree board rotation with angle lock mechanism',
+        'Board Length': '90cm to 240cm (Height customizable)',
+        'Included Set': '1pc pen tray, 1pc magnetic eraser, 3pcs colorful magnets',
+        'Base': 'Heavy circular platform preventing tripping hazards'
+      }
+    },
+    {
+      id: 'bw-e17',
+      category: 'flipchart',
+      categoryName: 'Flip Chart Stand',
+      name: 'BW-E17 Flip Chart Stand (Telescopic Tripod Presentation Easel)',
+      code: 'BW-E17',
+      image: '/assets/images/official-bw-e17.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Leg Finish',
+      variants: [
+        { name: 'Silver Telescopic Tripod', image: '/assets/images/official-bw-e17.jpg', badge: 'Silver' },
+        { name: 'Black Powder-Coated Stand', image: '/assets/images/flip-chart-easel-stand.jpg', badge: 'Black' }
+      ],
+      detailGallery: flipchartDetailGallery,
+      features: [
+        'Stepless Height-Adjustable Telescopic Legs (105cm - 185cm)',
+        'Universal Flip Chart Paper Clamp with Sliding Hooks',
+        'Lightweight Aluminum Construction for Fast Transport & Setup',
+        'Fold-Flat Design for Convenient Storage in Compact Spaces'
+      ],
+      specs: {
+        'Board Dimension': '70 x 100 cm (approx. 28" x 40")',
+        'Height Adjustment': '105 cm to 185 cm stepless adjustment range',
+        'Structure': 'Foldable 3-leg aluminum tripod with anti-slip rubber feet',
         'Surface Spec': 'Magnetic lacquered steel, dry-wipeable with marker magnets'
       }
     },
+
+    // 3. Magnetic Writing Board (sort1=3)
     {
-      id: 'kbw-round-flipchart',
-      category: 'flipchart',
-      categoryName: 'Flip Chart & Easel',
-      name: 'Mobile Round-Base Executive Flip Chart with Five Lockable Casters',
-      code: 'KBW-RB-10070',
-      image: '/assets/images/round-base-flipchart.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Base Color & Frame',
-      variants: [
-        { name: 'Silver Grey Mobile Base', image: '/assets/images/round-base-flipchart.jpg', badge: 'Silver' },
-        { name: 'Executive Black Base', image: '/assets/images/flip-chart-easel-stand.jpg', badge: 'Black' }
-      ],
-      detailGallery: mobileDetailGallery,
-      features: [
-        'Heavy Cast-Iron Circular Base for Maximum Anti-Tip Stability',
-        'Five Smooth-Rolling Mute Wheels with Foot Lock Latches',
-        'Magnetic Steel Writing Surface with Integrated Paper Clamp',
-        'Circular Base Allows Foot Room Without Tripping Hazard'
-      ],
-      specs: {
-        'Board Size': '100 x 70 cm (approx. 40" x 28")',
-        'Base Diameter': '68 cm heavy-gauge cast iron circular platform',
-        'Height Range': '160 cm to 195 cm vertical adjustment column',
-        'Paper Compatibility': 'Universal hole-punch spacing for all global flip chart pads',
-        'Certifications': 'BSCI factory audited, ISO 9001 quality verified'
-      }
-    },
-    {
-      id: 'kbw-wall-slim',
-      category: 'wall',
-      categoryName: 'Wall-Mounted Board',
-      name: 'Ultra-Slim Architectural Wall-Mounted Magnetic Whiteboard',
-      code: 'KBW-WALL-9060',
-      image: '/assets/images/wall-mounted-magnetic-whiteboard.jpg',
+      id: 'bw-v8',
+      category: 'magnetic-board',
+      categoryName: 'Magnetic Writing Board',
+      name: 'BW-V8 Magnetic Writing Board (Aluminum Frame & ABS Corners)',
+      code: 'BW-V8',
+      image: '/assets/images/official-bw-v8.jpg',
       moq: '50 pcs',
       leadTime: '15-20 Days',
       variantLabel: 'Frame & Corner Caps',
       variants: [
-        { name: 'Silver Frame / Grey Corners', image: '/assets/images/wall-mounted-magnetic-whiteboard.jpg', badge: 'Silver' },
-        { name: 'Black Frame / Black Corners', image: '/assets/images/detail-whiteboard-corner-hook.jpg', badge: 'Black' }
+        { name: 'Silver Aluminum Frame / Grey ABS Corners', image: '/assets/images/official-bw-v8.jpg', badge: 'Silver' },
+        { name: 'Black Anodized Frame / Black Corners', image: '/assets/images/detail-whiteboard-corner-hook.jpg', badge: 'Black' }
       ],
-      detailGallery: whiteboardDetailGallery,
+      detailGallery: boardDetailGallery,
       features: [
-        'Minimalist 10mm Ultra-Slim Bezel Profile',
-        'Concealed Corner-Fixing System with Safety ABS Caps',
-        'Scratch-Resistant Porcelain Enamel or Coated Steel Surface',
-        'Supports Both Landscape and Portrait Wall Installation'
+        'Anodized Aluminum Frame with Impact-Resistant ABS Safety Corners',
+        'Surface: Imported Painted Steel Sheet or Porcelain Enamel Steel',
+        'Back Side: Galvanized Zinc Steel Sheet for Permanent Anti-Rust Flatness',
+        'Core Infill: Honeycomb Board, 7-Layer Cardboard, MDF or Foam Board'
       ],
       specs: {
-        'Available Dimensions': '90x60cm, 120x90cm, 150x100cm, 180x120cm, 240x120cm',
-        'Frame Finish': 'Satin silver anodized aluminum or matte black powder-coat',
-        'Corner Caps': 'ABS engineering plastic with concealed fixing screw covers',
-        'Mounting Kit': 'Includes zinc-plated wall brackets, masonry plugs & screws',
-        'Pen Tray': 'Detachable 30cm clip-on anodized aluminum tray'
+        'Standard Dimensions': '90x60cm, 120x90cm, 150x100cm, 180x120cm, 240x120cm (Custom sizes available)',
+        'Writing Surface': 'Imported painted steel sheet or porcelain enamel steel',
+        'Frame Thickness': '1.2mm heavy-gauge anodized aluminum profile with ABS safety corners',
+        'Core Infill': 'Honeycomb board, 7-layer strong cardboard, MDF, or foam board',
+        'Backing Material': 'Galvanized zinc steel anti-corrosion backing sheet',
+        'Included Accessories': '1pc pen holder, 2-4pcs wall-mounted hangers, 1pc eraser, 3pcs magnets',
+        'Structure Options': 'Single side or double sides available'
       }
     },
     {
-      id: 'kbw-desktop-glass',
-      category: 'glass',
-      categoryName: 'Glass & Desktop Board',
-      name: 'Tempered Glass Desktop Whiteboard with Storage Drawer',
-      code: 'KBW-GLASS-DESK',
-      image: '/assets/images/desktop-glass-whiteboard.jpg',
+      id: 'bw-v1',
+      category: 'magnetic-board',
+      categoryName: 'Magnetic Writing Board',
+      name: 'BW-V1 Magnetic Writing Board (Patented Corner Profile)',
+      code: 'BW-V1',
+      image: '/assets/images/official-bw-v1.jpg',
       moq: '50 pcs',
       leadTime: '15-20 Days',
-      variantLabel: 'Glass & Chassis Color',
+      variantLabel: 'Surface & Frame',
       variants: [
-        { name: 'Pure White Glass / White Base', image: '/assets/images/desktop-glass-whiteboard.jpg', badge: 'White' },
-        { name: 'Ultra-Clear Glass / Black Base', image: '/assets/images/desktop-glass-whiteboard.jpg', badge: 'Black' }
+        { name: 'Silver Aluminum / Magnetic White', image: '/assets/images/official-bw-v1.jpg', badge: 'White' },
+        { name: 'Green Chalkboard Surface', image: '/assets/images/official-bw-v2.jpg', badge: 'Green' }
+      ],
+      detailGallery: boardDetailGallery,
+      features: [
+        'Patented Corner Fitting System with Concealed Screw Covers',
+        'High Magnetic Reception Suitable for Heavy Magnetic Accessories',
+        'Multi-Layer Anti-Scratch Coating Erases Cleanly with Zero Residue',
+        'Galvanized Zinc Steel Back Protects Against Warping in High Humidity'
+      ],
+      specs: {
+        'Dimensions': 'Any standard and custom sizes available upon request',
+        'Frame': 'Patented aluminum extruded profile with safety corners',
+        'Hangers': 'Sliding adjustable wall-mounting brackets included',
+        'Packaging': 'Individual shrink-wrap or cardboard box packing'
+      }
+    },
+    {
+      id: 'bw-v2',
+      category: 'magnetic-board',
+      categoryName: 'Magnetic Writing Board',
+      name: 'BW-V2 Magnetic Writing Board (Architectural Narrow Bezel)',
+      code: 'BW-V2',
+      image: '/assets/images/official-bw-v2.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Frame Finish',
+      variants: [
+        { name: 'Silver Matte Finish', image: '/assets/images/official-bw-v2.jpg', badge: 'Silver' },
+        { name: 'Black Powder Coating', image: '/assets/images/official-bw-v8.jpg', badge: 'Black' }
+      ],
+      detailGallery: boardDetailGallery,
+      features: [
+        'Modern Narrow Bezel Design for Modern Conference Rooms & Classrooms',
+        'Heavy-Duty Aluminum Extrusion with Full-Length Marker Tray',
+        'High-Density Rigid Paper Honeycomb Core Prevents Dents and Bubbles',
+        'Supports Both Horizontal and Vertical Wall-Mounted Orientation'
+      ],
+      specs: {
+        'Sizes': 'Standard 60x45cm up to 300x120cm conference sizes',
+        'Core': 'Rigid anti-warp honeycomb board core',
+        'Accessories': '2-4 wall mounting hooks, pen tray, eraser & magnets',
+        'Compliance': 'BSCI audited factory production, REACH compliant'
+      }
+    },
+
+    // 4. Notice Board (sort1=4)
+    {
+      id: 'bw-v1-nb',
+      category: 'notice-board',
+      categoryName: 'Notice Board',
+      name: 'BW-V1 Notice Board (Natural Cork / Fabric Surface)',
+      code: 'BW-V1 (Notice)',
+      image: '/assets/images/official-bw-nb1.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Infill Surface',
+      variants: [
+        { name: 'Natural Cork Surface', image: '/assets/images/official-bw-nb1.jpg', badge: 'Cork' },
+        { name: 'Fabric Felt Surface', image: '/assets/images/official-bw-nb2.jpg', badge: 'Felt' }
+      ],
+      detailGallery: boardDetailGallery,
+      features: [
+        'Notice Board with Aluminum Frame and ABS Safety Corners',
+        'Surface Material: Natural Cork Sheet or Color Fabric Felt',
+        'Core Materials: 7-Layer Strong Cardboard, LDF, Foam or Honeycomb Board',
+        'Back Side: Fabric Sheet, Cork Sheet, Cardboard or Paper Backing'
+      ],
+      specs: {
+        'Available Dimensions': '90x60cm, 120x90cm, 150x100cm, 180x120cm (Custom sizes available)',
+        'Surface Choice': '100% natural self-healing cork or acoustic fabric felt',
+        'Frame': 'Anodized aluminum alloy frame with injection ABS corners',
+        'Accessories': '2pcs or 4pcs wall-mounted hangers, 5pcs push pins',
+        'Structure': 'Single side or double sides available'
+      }
+    },
+    {
+      id: 'bw-v2-nb',
+      category: 'notice-board',
+      categoryName: 'Notice Board',
+      name: 'BW-V2 Notice Board (Acoustic Felt Bulletin Board)',
+      code: 'BW-V2 (Notice)',
+      image: '/assets/images/official-bw-nb2.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Felt Color',
+      variants: [
+        { name: 'Grey Acoustic Felt', image: '/assets/images/official-bw-nb2.jpg', badge: 'Grey' },
+        { name: 'Blue Felt Surface', image: '/assets/images/official-bw-nb1.jpg', badge: 'Blue' }
+      ],
+      detailGallery: boardDetailGallery,
+      features: [
+        'Non-Fading Acoustic Fabric Surface Firmly Holds Push Pins & Notes',
+        'Sturdy Anodized Aluminum Perimeter Frame with Corner Caps',
+        'Rigid Lightweight Sandwich Core Keeps Pinboard Permanently Flat',
+        'Ideal for Schools, Office Corridors, Staff Rooms & Community Bulletin'
+      ],
+      specs: {
+        'Dimensions': '60x45cm to 240x120cm available',
+        'Surface': 'Premium dense non-woven acoustic bulletin felt',
+        'Mounting': 'Concealed corner-hole mounting or external sliding brackets',
+        'Packaging': 'Individually boxed or shrink-wrapped with master carton'
+      }
+    },
+
+    // 5. Showcase (sort1=7)
+    {
+      id: 'bw-a1',
+      category: 'showcase',
+      categoryName: 'Showcase',
+      name: 'BW-A1 Showcase (Lockable Aluminum Frame Display Case)',
+      code: 'BW-A1',
+      image: '/assets/images/official-bw-a1.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      variantLabel: 'Frame & Infill Color',
+      variants: [
+        { name: 'Satin Silver Frame / Whiteboard', image: '/assets/images/official-bw-a1.jpg', badge: 'Silver' },
+        { name: 'Matte Black Frame / Whiteboard', image: '/assets/images/official-bw-c3.jpg', badge: 'Black' },
+        { name: 'Silver Frame / Cork Infill', image: '/assets/images/official-bw-b1.jpg', badge: 'Cork' }
+      ],
+      detailGallery: showcaseDetailGallery,
+      features: [
+        'Indoor Showcase with Heavy-Duty Aluminum Frame',
+        'Inside Can Be: White Board, Green Chalk Board, Cork Board or Fabric Board',
+        'Showcase Comes with Precision Cylinder Lock and 2 Keys',
+        'Door Style: Casement Door or Sliding Door (1, 2, or 3 Door Leaves)'
+      ],
+      specs: {
+        'Door Configurations': 'Casement swinging door or sliding door (1 leaf, 2 leaves, or 3 leaves)',
+        'Inside Options': 'Whiteboard, green chalkboard, black board, cork board, or fabric board',
+        'Frame Colors': 'Silver, Black anodized aluminum alloy',
+        'Security System': 'Zinc-alloy cylinder lock with 2 keys included',
+        'Available Dimensions': 'Any sizes are fully customizable according to client requests'
+      }
+    },
+    {
+      id: 'bw-b1',
+      category: 'showcase',
+      categoryName: 'Showcase',
+      name: 'BW-B1 Showcase (Outdoor Weatherproof Enclosed Notice Case)',
+      code: 'BW-B1',
+      image: '/assets/images/official-bw-b1.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      variantLabel: 'Frame Coating',
+      variants: [
+        { name: 'Silver Weatherproof Casing', image: '/assets/images/official-bw-b1.jpg', badge: 'Silver' },
+        { name: 'Black Weatherproof Casing', image: '/assets/images/official-bw-a1.jpg', badge: 'Black' }
+      ],
+      detailGallery: showcaseDetailGallery,
+      features: [
+        'Outdoor Weatherproof Design with Perimeter EPDM Rubber Moisture Seals',
+        'Shatter-Resistant Tempered Glass Door with Continuous Piano Hinge',
+        'Pin-Friendly Natural Cork or Magnetic Whiteboard Interior',
+        'Concealed Internal Mounting Holes Deter Vandalism in Public Spaces'
+      ],
+      specs: {
+        'Sizes': 'Standard 36"x24", 48"x36", 60"x36" or custom architectural dimensions',
+        'Glazing': '3.2mm automotive-grade tempered safety glass',
+        'Weatherproofing': 'Perimeter compression rubber gasket and drainage weep holes',
+        'Lock': 'Weather-sealed cam lock with 2 security keys'
+      }
+    },
+    {
+      id: 'bw-c3',
+      category: 'showcase',
+      categoryName: 'Showcase',
+      name: 'BW-C3 Showcase (Commercial Sliding Glass Display Case)',
+      code: 'BW-C3',
+      image: '/assets/images/official-bw-c3.jpg',
+      moq: '50 pcs',
+      leadTime: '20-25 Days',
+      variantLabel: 'Door Style',
+      variants: [
+        { name: 'Sliding Double Glass Doors', image: '/assets/images/official-bw-c3.jpg', badge: 'Sliding' },
+        { name: 'Single Casement Swing Door', image: '/assets/images/official-bw-a1.jpg', badge: 'Swing' }
+      ],
+      detailGallery: showcaseDetailGallery,
+      features: [
+        'Dual Sliding Tempered Glass Doors on Precision Ball-Bearing Bottom Tracks',
+        'Push-Button Ratchet Cylinder Lock for Secure Commercial Operation',
+        'Deep 50mm Interior Clearance Accommodates Multi-Layer Thick Posters',
+        'Anodized Silver Aluminum Extruded Casing with Rounded Corners'
+      ],
+      specs: {
+        'Door Type': 'Double bypass sliding tempered glass panels with ground finger pulls',
+        'Interior Clearance': '50mm depth between surface and glass',
+        'Surface': 'High-density natural cork or magnetic whiteboard back',
+        'Mounting': 'Concealed heavy-gauge wall anchor brackets included'
+      }
+    },
+
+    // 6. Magnetic Glass Writing Board (sort1=8)
+    {
+      id: 'bw-v16',
+      category: 'glass-board',
+      categoryName: 'Magnetic Glass Writing Board',
+      name: 'BW-V16 Magnetic Glass Writing Board (Frameless Architectural Glass)',
+      code: 'BW-V16',
+      image: '/assets/images/official-bw-v16.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Glass Tint',
+      variants: [
+        { name: 'Pure White Frosted Glass', image: '/assets/images/official-bw-v16.jpg', badge: 'White' },
+        { name: 'Executive Black Glass', image: '/assets/images/desktop-glass-whiteboard.jpg', badge: 'Black' }
       ],
       detailGallery: desktopDetailGallery,
       features: [
-        'High-End Non-Porous Tempered Glass Surface That Never Stains',
-        'Built-in Multi-Compartment Storage Drawer for Office Supplies',
-        'Angled Ergonomic Writing Surface Fits Between Keyboard & Monitor',
-        'Top Channel Groove Holds Tablets, Smartphones & Markers'
+        '4mm High-Clarity Tempered Safety Glass with Polished Pencil Edges',
+        'Non-Porous Glass Surface Never Stains, Ghosts, or Dents',
+        'Galvanized Metal Backing Accepts Heavy-Duty Neodymium Magnets',
+        'Stainless Steel Pass-Through Standoff Mounting Hardware Included'
+      ],
+      specs: {
+        'Glass Material': '4mm shatter-resistant ultra-clear tempered glass',
+        'Edge Finish': 'Precision CNC ground round pencil polished edges',
+        'Mounting Kit': 'Solid stainless steel architectural pass-through standoffs',
+        'Dimensions': '60x45cm, 90x60cm, 120x90cm, 150x100cm, 180x120cm, 240x120cm'
+      }
+    },
+    {
+      id: 'bw-dt',
+      category: 'glass-board',
+      categoryName: 'Magnetic Glass Writing Board',
+      name: 'BW-DT Magnetic Glass Writing Board (Desktop Glass Memo Pad with Storage)',
+      code: 'BW-DT',
+      image: '/assets/images/official-bw-dt.jpg',
+      moq: '50 pcs',
+      leadTime: '15-20 Days',
+      variantLabel: 'Chassis Color',
+      variants: [
+        { name: 'White ABS Chassis / White Glass', image: '/assets/images/official-bw-dt.jpg', badge: 'White' },
+        { name: 'Black Chassis Edition', image: '/assets/images/desktop-glass-whiteboard.jpg', badge: 'Black' }
+      ],
+      detailGallery: desktopDetailGallery,
+      features: [
+        'Smooth Tempered Glass Writing Surface Fits Perfectly in Front of Keyboards',
+        'Slide-Out Storage Drawer with Partition Compartments for Office Stationery',
+        'Integrated Top Groove for Holding Smartphones, Tablets, and Dry-Erase Markers',
+        'Non-Skid Silicone Feet Ensure Stable Writing without Slipping on Desks'
       ],
       specs: {
         'Dimensions': '45 x 20 x 5 cm (Desktop footprint)',
-        'Glass Spec': '4mm ultra-clear tempered glass with polished pencil edge',
-        'Drawer Material': 'Heavy-duty ABS chassis with partition compartments',
-        'Anti-Slip Base': '6 high-friction silicone pads for desk stability',
-        'Packaging': 'Full color gift box with drop-tested internal EPE foam'
+        'Writing Surface': '4mm ultra-clear tempered glass with polished edges',
+        'Drawer Material': 'Durable ABS chassis with molded divider compartments',
+        'Packaging': 'Full-color mail-order retail box with protective EPE foam'
       }
     },
+
+    // 7. Iron Desktop Writing Board (sort1=13)
     {
-      id: 'kbw-led-acrylic-1612',
-      category: 'glass',
-      categoryName: 'LED Acrylic & Message Board',
-      name: '20" Large LED Drawing Board & 16"x12" Light-Up Acrylic Dry Erase Board',
-      code: 'KBW-LED-1612',
-      image: '/assets/images/product-led-acrylic-board.jpg',
-      moq: '50 pcs (OEM custom branding & packaging)',
+      id: 'bw-d1',
+      category: 'desktop-iron',
+      categoryName: 'Iron Desktop Writing Board',
+      name: 'BW-D1 Iron Desktop Writing Board (Freestanding Metal Memo Board)',
+      code: 'BW-D1',
+      image: '/assets/images/official-bw-d1.jpg',
+      moq: '50 pcs',
       leadTime: '15-20 Days',
-      variantLabel: 'Lighting Spectrum & Stand',
+      variantLabel: 'Powder Coat Finish',
       variants: [
-        { name: 'RGB 7-Color Dynamic Rainbow', image: '/assets/images/product-led-acrylic-board.jpg', badge: 'RGB' },
-        { name: 'Warm White Ambient Glow', image: '/assets/images/product-led-acrylic-board.jpg', badge: 'Warm' }
+        { name: 'Matte White Powder Coat', image: '/assets/images/official-bw-d1.jpg', badge: 'White' },
+        { name: 'Matte Black Powder Coat', image: '/assets/images/official-bw-d2.jpg', badge: 'Black' }
       ],
       detailGallery: desktopDetailGallery,
       features: [
-        'Dynamic Lighting with 7 Vibrant RGB Colors & 6 Lighting Modes',
-        'Shatter-Resistant Optical Acrylic Panel with Polished Edges',
-        'Dual Placement: Desktop Invisible Stands & Hanging Chain Kit',
-        'Includes 7 Liquid Chalk Pens, Cleaning Cloth & Spray Bottle'
+        'Durable Electrostatic Powder-Coated Iron Construction',
+        'Dual-Sided Magnetic Writing Surface Accepts All Standard Magnets',
+        'Stable Integrated Angled Base Sits Firmly on Student Desks and Counters',
+        'Smooth Dry-Erase Surface for Daily Reminders, To-Do Lists & Task Planning'
       ],
       specs: {
-        'Standard Dimensions': '16" x 12" (40 x 30 cm) / 20" Diagonal Screen',
-        'Panel Material': 'Premium optical shatter-resistant acrylic with smooth polished edges',
-        'Lighting Modes': '7 vibrant RGB color options & 6 dynamic light sequences with blinking control',
-        'Multi-Purpose Application': 'Office memo board, home message sign, café/retail menu board, night light, kids creative drawing pad',
-        'Dual Mounting Setup': '2 invisible acrylic desktop stands + stainless hanging chain and hooks',
-        'Included Accessories': '7 vibrant liquid chalk pens, 2 microfiber cleaning cloths, spray bottle, USB power cable',
-        'Power Supply': 'Low-voltage 5V USB powered with in-line controller buttons',
-        'OEM / ODM Customization': 'Custom logo printing, bespoke gift box packaging, custom sizes and lighting colors'
-      }
-    },
-    {
-      id: 'kbw-notice-case',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: 'Lockable Tamperproof Glass Door Enclosed Bulletin Board',
-      code: 'KBW-NOTICE-3624',
-      image: '/assets/images/enclosed-notice-board.png',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Frame Finish & Infill',
-      variants: [
-        { name: 'Satin Silver Aluminum Frame', image: '/assets/images/enclosed-notice-board.png', badge: 'Silver' },
-        { name: 'Matte Black Aluminum Frame', image: '/assets/images/glass-door-showcase.jpg', badge: 'Black' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Sliding/Hinged Tempered Glass Door with Cylinder Lock & Keys',
-        'Self-Healing Natural Cork or Felt Pinboard Infill',
-        'Reinforced Heavy-Gauge Aluminum Extruded Enclosure',
-        'Weather-Resistant Seal for Indoor & Corridor Usage'
-      ],
-      specs: {
-        'Dimensions': '36"x24", 48"x36", 60"x36"',
-        'Door Type': 'Sliding or hinged shatter-resistant safety glass',
-        'Locking System': 'Zinc alloy cylinder lock with 2 unique keys',
-        'Backing Core': 'High-density LDF board with premium self-healing natural cork',
-        'Frame Depth': '45mm interior clearance for multi-layer memos & badges'
-      }
-    },
-    {
-      id: 'kbw-showcase-deluxe',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: 'Wall-Mount Aluminum Showcase with Lockable Tempered Glass',
-      code: 'KBW-SHOW-WALL',
-      image: '/assets/images/glass-door-showcase.jpg',
-      moq: '100 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Frame Anodizing Finish',
-      variants: [
-        { name: 'Satin Silver Anodized Aluminum', image: '/assets/images/glass-door-showcase.jpg', badge: 'Silver' },
-        { name: 'Matte Black Aluminum Enclosure', image: '/assets/images/enclosed-notice-board.png', badge: 'Black' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Dual Key Security Locking Mechanism',
-        'Anodized Heavy Aluminum Extrusion with Rounded Safety Corners',
-        'Pin-Friendly Felt/Fabric or Natural Cork Board',
-        'Full Concealed Wall Installation Kit'
-      ],
-      specs: {
-        'Dimensions': '90x60cm, 120x90cm, 150x100cm',
-        'Glass Material': '3.2mm shatterproof automotive-grade tempered glass',
-        'Applications': 'Schools, hotels, corporate lobbies, hospitals, community centers',
-        'Security': 'Tamper-resistant lock system preventing unauthorized memo removal'
-      }
-    },
-    {
-      id: 'kbw-mini-desktop-pack',
-      category: 'glass',
-      categoryName: 'Desktop & Portable Board',
-      name: '11"x8" Double-Sided Portable Desktop Whiteboard with Stand (2-Pack)',
-      code: 'KBW-MINI-1108',
-      image: '/assets/images/product-mini-desktop-whiteboard.jpg',
-      moq: '100 sets (Retail 2-Pack ready)',
-      leadTime: '15-20 Days',
-      variantLabel: 'Stand Style & Finish',
-      variants: [
-        { name: 'Silver 360° Rotating Stand (2-Pack)', image: '/assets/images/product-mini-desktop-whiteboard.jpg', badge: 'Silver' },
-        { name: 'Compact Magnetic Lapboard Pack', image: '/assets/images/product-mini-lapboard-portable.jpg', badge: 'Slim' }
-      ],
-      detailGallery: desktopDetailGallery,
-      features: [
-        '360° Adjustable Aluminum Stand for Versatile Angle Viewing',
-        'Double-Sided Magnetic Dry-Erase Surface with Zero-Ghosting Coating',
-        'Compact 11" x 8" Portable Size for Desks, Students & Daily Task Planning',
-        'Complete Kit: Includes 2 Lapboards, Dry-Erase Markers & Magnetic Eraser'
-      ],
-      specs: {
-        'Standard Dimensions': '11" x 8" (28 x 21 cm) per board',
-        'Panel Core': 'Double-sided multi-layer coated magnetic dry-erase plate',
-        'Stand Bracket': '360-degree rotating silver aluminum alloy desktop stand',
-        'Included Set': '2 boards, 2 dry-erase markers, 2 mini magnetic erasers, 4 anti-slip pads',
-        'Packaging': 'Compact e-commerce mail-order box with protective bubble cushioning'
-      }
-    },
-    {
-      id: 'kbw-lapboard-portable',
-      category: 'glass',
-      categoryName: 'Desktop & Portable Lapboard',
-      name: '11"x8" Double-Sided Magnetic Portable Mini Whiteboard Lapboard',
-      code: 'KBW-LAP-1108',
-      image: '/assets/images/product-mini-lapboard-portable.jpg',
-      moq: '100 pcs (Custom OEM printing & color retail packaging)',
-      leadTime: '15-20 Days',
-      variantLabel: 'Corner & Frame Spec',
-      variants: [
-        { name: 'Silver Aluminum / Grey Corners', image: '/assets/images/product-mini-lapboard-portable.jpg', badge: 'Silver' },
-        { name: 'Desktop Stand Combo Edition', image: '/assets/images/product-mini-desktop-whiteboard.jpg', badge: 'Stand' }
-      ],
-      detailGallery: desktopDetailGallery,
-      features: [
-        'Double-Sided Multi-Layer Coated Magnetic Whiteboard Writing Surfaces',
-        'Smooth Scratch-Resistant Surface Erases Cleanly with Zero Ghosting or Stains',
-        'Ultra-Lightweight & Slim Profile for Students, Classrooms, Desks & Lockers',
-        'Includes Magnetic Dry-Erase Pen with Cap Eraser & Snap-On Pen Clip'
-      ],
-      specs: {
-        'Standard Dimensions': '11" x 8" (A4: 28 x 21 cm)',
-        'Board Core': 'Double-sided magnetic lacquered steel surface with rigid lightweight core',
-        'Mounting & Use': 'Handheld lapboard, magnetic adherence to metal desks/fridges, horizontal or vertical wall hanging',
-        'Included Accessories': '1 fine-tip dry-erase marker with eraser cap, 1 detachable pen clip',
-        'Packaging': 'Individual retail sleeve or multi-pack master export carton'
-      }
-    },
-    {
-      id: 'kbw-notice-cork-outdoor',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Weatherproof Outdoor Enclosed Cork Bulletin Board with Locking Door',
-      code: 'KBW-ENC-3624-C',
-      image: '/assets/images/product-notice-cork-outdoor.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Casing Color & Seal',
-      variants: [
-        { name: 'Matte Black Weatherproof Frame', image: '/assets/images/product-notice-cork-outdoor.jpg', badge: 'Black' },
-        { name: 'Silver Anodized Weatherproof Frame', image: '/assets/images/product-notice-silver-cork.jpg', badge: 'Silver' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Weatherproof Outdoor Design with EPDM Gasket Moisture Seal',
-        'High-Density Self-Healing Natural Cork Recovers from Pinholes',
-        'Shatter-Resistant Polycarbonate Door with Cylinder Lock & 2 Keys',
-        'Reinforced Heavy-Gauge Matte Black Aluminum Alloy Casing'
-      ],
-      specs: {
-        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 4 A4 sheet capacity',
-        'Board Core': '100% natural premium dense self-healing cork board',
-        'Door Construction': 'Heavy-duty UV-stabilized shatter-resistant optical window',
-        'Locking Mechanism': 'Zinc-alloy cylinder lock with 2 security keys',
-        'Mounting Kit': 'Full stainless concealed anchor bolts and wall bracket hardware'
-      }
-    },
-    {
-      id: 'kbw-notice-cork-outdoor-f',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Weatherproof Outdoor Enclosed Cork Bulletin Board with Locking Door',
-      code: 'KBW-ENC-3624-F',
-      image: '/assets/images/product-notice-silver-cork.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Frame & Infill Finish',
-      variants: [
-        { name: 'Silver Anodized Frame / Cork', image: '/assets/images/product-notice-silver-cork.jpg', badge: 'Silver' },
-        { name: 'Matte Black Frame / Cork', image: '/assets/images/product-notice-cork-outdoor.jpg', badge: 'Black' },
-        { name: 'Grey Acoustic Felt Infill', image: '/assets/images/product-notice-grey-felt.jpg', badge: 'Grey' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Self-Healing Dense Natural Cork Pinboard Surface Stays Flawless',
-        'Lockable Tempered Glass Door with 2 Keys Protects from Weather & Tampering',
-        'Weatherproof Aluminum Frame Construction for Indoor and Outdoor Use',
-        'Flexible Mounting: Can Be Installed Horizontally or Vertically'
-      ],
-      specs: {
-        'Standard Dimensions': '36" x 24" (approx. 90 x 60 cm)',
-        'Core Surface': '100% premium dense self-healing natural cork board',
-        'Door Construction': 'Tempered safety glass door on continuous hinge with dual cylinder keys',
-        'Frame Construction': 'Weatherproof heavy-duty aluminum frame with perimeter weather-seal gaskets',
-        'Mounting Kit': 'Complete wall-mounting hardware included (horizontal/vertical orientation)'
-      }
-    },
-    {
-      id: 'kbw-notice-slideout-whiteboard',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Enclosed Bulletin Board with Hidden Slide-Out Magnetic Whiteboard',
-      code: 'KBW-ENC-SLIDE-3624',
-      image: '/assets/images/product-notice-slideout-whiteboard.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Finish & Slide-Out System',
-      variants: [
-        { name: 'Brushed Silver / Grey Felt + Whiteboard', image: '/assets/images/product-notice-slideout-whiteboard.jpg', badge: 'Silver' },
-        { name: 'Matte Black Anodized / Grey Felt', image: '/assets/images/product-notice-grey-felt.jpg', badge: 'Black' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Dual Functionality: 36"x24" Enclosed Noticeboard + Hidden Slide-Out Whiteboard',
-        'Slide-Out 36"x22" Magnetic Dry-Erase Panel Doubles Active Brainstorming Area',
-        'Brushed Metal Aluminum Frame with Clear Polycarbonate Locking Window',
-        'Complete Commercial Set: Magnets, Push Pins, Eraser & Wall Mounting System'
-      ],
-      specs: {
-        'Standard Dimensions': '36" x 24" closed / extends to 58" total working width',
-        'Bulletin Area': 'Self-healing dense bulletin surface with key-lock protective door',
-        'Slide-Out Board': 'Magnetic dry-erase steel surface on precision side-glide tracks',
-        'Frame Material': 'Architectural brushed silver anodized aluminum profile',
-        'Included Accessories': 'Assorted push pins, dry-erase board magnets, magnetic eraser'
-      }
-    },
-    {
-      id: 'kbw-notice-led-illuminated',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Concealed LED Enclosed Bulletin Board with Locking Tempered Glass Door',
-      code: 'KBW-LED-ENC-3624',
-      image: '/assets/images/product-notice-led-illuminated.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      variantLabel: 'Illumination & Frame',
-      variants: [
-        { name: 'Edge-Lit Concealed LED (Silver Frame)', image: '/assets/images/product-notice-led-illuminated.jpg', badge: 'LED' },
-        { name: 'Standard Non-Illuminated Natural Cork', image: '/assets/images/product-notice-silver-cork.jpg', badge: 'Std' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Concealed Seamless Frame LED Lighting with Power Cord & Plug (No Electrician Needed)',
-        'Dense Self-Healing Natural Cork Board Seamlessly Conceals Repeated Pin Holes',
-        'Lockable Tempered Glass Door with 2 Keys to Deter Vandalism & Tampering',
-        'Durable Silver Aluminum Frame with Sleek Mitered Corners & Hidden Hanging System'
-      ],
-      specs: {
-        'Standard Dimensions': '36" x 24" (approx. 90 x 60 cm)',
-        'Lighting System': 'Concealed frame-integrated LED lighting with plug-and-play power cord',
-        'Door Construction': 'Tempered safety glass door panel with precision cylinder lock & 2 keys',
-        'Surface Material': 'Self-healing dense natural cork resilient pin surface',
-        'Installation': 'Hidden hanging bracket system with complete mounting hardware included'
-      }
-    },
-    {
-      id: 'kbw-notice-acrylic-door',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Wall-Mounted Enclosed Cork Noticeboard with Clear Acrylic Locking Door (5 x A4)',
-      code: 'KBW-ENC-3624-ACRYLIC',
-      image: '/assets/images/product-notice-acrylic-door.jpg',
-      moq: '50 pcs',
-      leadTime: '15-20 Days',
-      variantLabel: 'Door & Frame Option',
-      variants: [
-        { name: 'Silver Frame / Clear Acrylic Door', image: '/assets/images/product-notice-acrylic-door.jpg', badge: 'Silver' },
-        { name: 'Heavy-Duty Glass Door Option', image: '/assets/images/product-notice-silver-cork.jpg', badge: 'Glass' }
-      ],
-      detailGallery: noticeDetailGallery,
-      features: [
-        'Sturdy Self-Healing Cork Surface Seamlessly Conceals Pin & Tack Holes',
-        'Durable Clear Acrylic Swinging Door with Precision Key-Locking Mechanism (2 Keys)',
-        'Generous 34" x 22" Usable Interior Space Accommodating Up to 5 Standard A4 Sheets',
-        '0.4" Thick Felt-Backed Cork Core in a Sleek, Lightweight Aluminum Frame'
-      ],
-      specs: {
-        'Total Frame Dimensions': '36" x 24" (90 x 60 cm)',
-        'Usable Display Area': '34" x 22" (86 x 56 cm) / 5 x A4 sheet capacity',
-        'Door Construction': 'Durable shatterproof clear optical acrylic swinging door with key lock',
-        'Core Thickness': 'Up to 0.4" (10mm) dense self-healing cork with resilient felt backing',
-        'Mounting Kit': 'Included comprehensive mounting tools and anchors for simple installation'
+        'Material': 'High-gauge cold-rolled iron sheet with electro-deposition coating',
+        'Structure': 'One-piece bent metal design with self-standing counterweight base',
+        'Dimensions': 'Compact desktop sizes (approx. 25x18cm / 30x21cm)',
+        'Applications': 'Offices, reception counters, student study desks, retail price signs'
       }
     }
   ];
@@ -602,23 +630,23 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent mb-3">
             <Layers className="w-4 h-4" />
-            <span>Product collection</span>
+            <span>Official Factory Collection</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-semibold text-primary tracking-tight">
-            Whiteboards for every space
+            Whiteboards & Display Systems
           </h2>
           <p className="text-secondary text-sm mt-3">
-            Compare mobile, wall-mounted, flip chart, glass and notice-board models with multiple color and frame finishes.
+            Authentic manufacturing models directly from Heshan Jinbowen factory catalog. Select models below to inspect specifications and color finishes.
           </p>
         </div>
 
-        {/* Filter Tabs */}
+        {/* Filter Tabs (Official Categories from protype.php) */}
         <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 border-b border-border overflow-x-auto">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded transition-all whitespace-nowrap ${
+              className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === cat.id
                   ? 'bg-primary text-white shadow-sm'
                   : 'bg-white text-secondary hover:text-primary hover:bg-slate-100 border border-border'
@@ -643,7 +671,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
               >
                 <div>
                   {/* Image Container with Badges */}
-                  <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden flex items-center justify-center p-3 border-b border-border">
+                  <div className="relative aspect-[4/3] bg-slate-50 overflow-hidden flex items-center justify-center p-3 border-b border-border">
                     <img
                       src={currentDisplayImage}
                       alt={product.name}
@@ -653,7 +681,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
                     <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-[10px] font-bold text-primary px-2 py-0.5 rounded border border-border">
                       {product.categoryName}
                     </div>
-                    <div className="absolute bottom-2.5 right-2.5 bg-primary/80 text-white text-[10px] font-mono font-medium px-1.5 py-0.5 rounded">
+                    <div className="absolute bottom-2.5 right-2.5 bg-primary/80 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
                       {product.code}
                     </div>
                   </div>
@@ -664,7 +692,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
                       {product.name}
                     </h3>
 
-                    {/* Amazon-Style Variant & Color Options Selector */}
+                    {/* Color Options Selector */}
                     {product.variants && product.variants.length > 0 && (
                       <div className="my-2.5 bg-slate-50/80 p-2 rounded border border-slate-200/80">
                         <div className="text-[11px] text-slate-600 mb-1.5 flex items-center justify-between">
@@ -770,13 +798,13 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
             </button>
 
             <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mb-1">
-              <span>Engineering Specification & Product Details</span>
+              <span>Official Factory Specification & Technical Data</span>
             </div>
             <h3 className="text-lg sm:text-2xl font-bold text-primary mb-5">
               {selectedSpecProduct.name}
             </h3>
 
-            {/* Product Engineering Details & Installation Gallery (From Alibaba & Factory Specs) */}
+            {/* Product Engineering Details & Installation Gallery */}
             {selectedSpecProduct.detailGallery && selectedSpecProduct.detailGallery.length > 0 && (
               <div className="mb-6 bg-slate-50 border border-border rounded-lg p-4">
                 <div className="flex items-center justify-between mb-3">
@@ -853,7 +881,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
             {/* Spec Table */}
             <div className="border border-border rounded-lg overflow-hidden mb-6">
               <div className="bg-slate-100/70 px-4 py-2 border-b border-border text-xs font-bold text-primary uppercase tracking-wider">
-                Technical Data Sheet
+                Official Factory Technical Data
               </div>
               <table className="w-full text-xs text-left">
                 <tbody className="divide-y divide-border">
