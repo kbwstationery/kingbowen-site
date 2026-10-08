@@ -31,6 +31,13 @@
 | Enclosed Board with Slideout Whiteboard | `/assets/images/product-notice-slideout-whiteboard.jpg` | user-provided (`Amazon ASIN B0CN7T26DL`) | Product Matrix: KBW-ENC-SLIDE-3624 Notice Case | ready |
 | Concealed LED Enclosed Bulletin Board | `/assets/images/product-notice-led-illuminated.jpg` | user-provided (`Amazon ASIN B0FLDGXZQ9`) | Product Matrix: KBW-LED-ENC-3624 Notice Case | ready |
 | Indoor Acrylic Door Cork Noticeboard | `/assets/images/product-notice-acrylic-door.jpg` | user-provided (`Amazon ASIN B0DBPFBFW8`) | Product Matrix: KBW-ENC-3624-ACRYLIC Notice Case | ready |
+| Detail: Corner Lock | `/assets/images/detail-corner-lock.jpg` | user-provided (`Alibaba / Amazon`) | Specs Modal: Corner & Lock Detail | ready |
+| Detail: Mounting Installation | `/assets/images/detail-mounting-installation.jpg` | user-provided (`Alibaba / Amazon`) | Specs Modal: Installation Method Detail | ready |
+| Detail: Frame Specification | `/assets/images/detail-frame-spec.jpg` | user-provided (`Alibaba / Amazon`) | Specs Modal: Aluminum Frame Section Detail | ready |
+| Detail: Whiteboard Corner & Hook | `/assets/images/detail-whiteboard-corner-hook.jpg` | user-provided (`Alibaba Jinbowen`) | Specs Modal: ABS Corner Cap & Pen Tray Detail | ready |
+| Detail: ABS Plastic Corner | `/assets/images/detail-abs-corner.jpg` | user-provided (`Alibaba Jinbowen`) | Specs Modal: ABS Safety Corner Close-Up | ready |
+| Detail: Mobile Stand & Casters | `/assets/images/detail-mobile-stand.jpg` | user-provided (`Alibaba Jinbowen`) | Specs Modal: Stand & Wheel Assembly Detail | ready |
+| Detail: Showcase Cylinder Lock | `/assets/images/detail-showcase-lock.png` | user-provided (`Alibaba Jinbowen`) | Specs Modal: Showcase Lock Detail | ready |
 | Meeting Collaboration Scene | `/assets/images/scenario-meeting-collaboration.png` | imageGenerate | Hero and Use Scenarios: Meeting Collaboration | ready |
 | Classroom Teaching Scene | `/assets/images/scenario-classroom-teaching.png` | imageGenerate | Use Scenarios: Classroom Teaching | ready |
 | Mobile Whiteboard Discussion Scene | `/assets/images/scenario-mobile-discussion.png` | imageGenerate | Use Scenarios: Mobile Board Discussion | ready |
