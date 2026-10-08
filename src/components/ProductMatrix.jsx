@@ -6,11 +6,11 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   const [selectedSpecProduct, setSelectedSpecProduct] = useState(null);
 
   const categories = [
-    { id: 'all', name: 'All Categories (8)' },
+    { id: 'all', name: 'All Categories (9)' },
     { id: 'mobile', name: 'Mobile Rolling Boards' },
     { id: 'flipchart', name: 'Flip Chart & Easels' },
     { id: 'wall', name: 'Wall-Mounted Boards' },
-    { id: 'glass', name: 'Glass & Desktop Pads' },
+    { id: 'glass', name: 'Glass & LED Note Boards' },
     { id: 'notice', name: 'Notice Cases & Showcases' },
   ];
 
@@ -153,6 +153,31 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
         'Drawer Material': 'Heavy-duty ABS chassis with partition compartments',
         'Anti-Slip Base': '6 high-friction silicone pads for desk stability',
         'Packaging': 'Full color gift box with drop-tested internal EPE foam'
+      }
+    },
+    {
+      id: 'kbw-led-acrylic-1612',
+      category: 'glass',
+      categoryName: 'LED Acrylic & Message Board',
+      name: '20" Light-Up Acrylic LED Dry-Erase Board with 7 RGB Modes',
+      code: 'KBW-LED-1612 (ASIN: B0GVJBB35V)',
+      image: '/assets/images/product-led-acrylic-board.jpg',
+      moq: '50 pcs (OEM custom branding & packaging)',
+      leadTime: '15-20 Days',
+      features: [
+        '7 Vibrant RGB Colors & 6 Dynamic Flashing Light Modes',
+        'Optical Shatter-Resistant Acrylic Surface with Polished Edges',
+        'Dual Placement: Desktop Invisible Stands & Stainless Hanging Chain',
+        'Multi-Purpose: Creative Drawing, Office Memo, Café & Retail Menu Sign'
+      ],
+      specs: {
+        'Standard Dimensions': '16" x 12" (40 x 30 cm) / 20" Diagonal Screen',
+        'Panel Material': 'High-clarity optical grade scratch-resistant acrylic',
+        'Illumination': 'Side-lit edge LED strip, 7 RGB colors + 6 flashing effects',
+        'Mounting & Placement': 'Dual transparent acrylic easel stands + hanging hooks & chain',
+        'Included Accessories': '7-color liquid chalk pens, micro-fiber cleaning cloth, USB cable',
+        'Power Supply': 'Low-voltage 5V USB powered with in-line switch controller',
+        'Certifications': 'CE, RoHS, FCC compliant'
       }
     },
     {

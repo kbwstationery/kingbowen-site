@@ -23,6 +23,7 @@
 | Factory Tour Video | `/assets/videos/factory-tour.mp4` | user-provided (`02工厂视频/Alibaba认证工厂视频.mp4`) | Hero Section Main Video Showcase | ready |
 | Honeycomb Gluing Video | `/assets/videos/honeycomb-gluing.mp4` | user-provided (`滚胶-蜂窝板夹层.mp4`) | Factory Tour: PUR Lamination & Honeycomb Roller Gluing Video | ready |
 | Height-Adjustable Mobile Whiteboard | `/assets/images/kbw-x7.jpg` | user-provided (`attachment 1.jpg`) | Product Matrix: KBW-X7 Height Adjustable Board | ready |
+| 20" Light-Up Acrylic LED Board | `/assets/images/product-led-acrylic-board.jpg` | user-provided (`Amazon ASIN: B0GVJBB35V`) | Product Matrix: KBW-LED-1612 LED Note Board | ready |
 | Meeting Collaboration Scene | `/assets/images/scenario-meeting-collaboration.png` | imageGenerate | Hero and Use Scenarios: Meeting Collaboration | ready |
 | Classroom Teaching Scene | `/assets/images/scenario-classroom-teaching.png` | imageGenerate | Use Scenarios: Classroom Teaching | ready |
 | Mobile Whiteboard Discussion Scene | `/assets/images/scenario-mobile-discussion.png` | imageGenerate | Use Scenarios: Mobile Board Discussion | ready |
