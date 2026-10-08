@@ -6,7 +6,7 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
   const [selectedSpecProduct, setSelectedSpecProduct] = useState(null);
 
   const categories = [
-    { id: 'all', name: 'All Categories (17)' },
+    { id: 'all', name: 'All Categories (15)' },
     { id: 'mobile', name: 'Mobile Rolling Boards' },
     { id: 'flipchart', name: 'Flip Chart & Easels' },
     { id: 'wall', name: 'Wall-Mounted Boards' },
@@ -250,29 +250,6 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       }
     },
     {
-      id: 'kbw-glass-calculator-desk',
-      category: 'glass',
-      categoryName: 'Glass & Desktop Board',
-      name: 'Tempered Glass Desktop Whiteboard with Built-in Calculator & Keyboard Stand',
-      code: 'KBW-GLASS-CALC',
-      image: '/assets/images/product-glass-calculator-desk.jpg',
-      moq: '50 pcs',
-      leadTime: '15-20 Days',
-      features: [
-        'Integrated 12-Digit Solar & Battery Desktop Calculator',
-        '4mm High-Clarity Tempered Glass Writing Surface with Scratch Resistance',
-        'Hidden Slide-Out Drawer Chassis for Markers, Pens & Paperclips',
-        'Angled Keyboard Stand Profile Fits Seamlessly in Front of Monitors'
-      ],
-      specs: {
-        'Standard Dimensions': '18" x 8" x 2" (45 x 20 x 5 cm)',
-        'Writing Surface': '4mm heavy-gauge ultra-clear tempered glass with polished pencil edge',
-        'Integrated Feature': 'Solar + button-battery dual-power 12-digit electronic calculator',
-        'Storage Compartment': 'Multi-divided sliding ABS chassis with cable channel pass-through',
-        'Packaging': 'Premium color retail packaging with drop-tested EPE molded foam'
-      }
-    },
-    {
       id: 'kbw-notice-cork-outdoor',
       category: 'notice',
       categoryName: 'Notice Case & Showcase',
@@ -296,26 +273,26 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       }
     },
     {
-      id: 'kbw-notice-grey-felt',
+      id: 'kbw-notice-cork-outdoor-f',
       category: 'notice',
       categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Weatherproof Enclosed Display Case with Grey Acoustic Felt Backing',
+      name: '36"x24" Weatherproof Outdoor Enclosed Cork Bulletin Board with Locking Door',
       code: 'KBW-ENC-3624-F',
-      image: '/assets/images/product-notice-grey-felt.jpg',
+      image: '/assets/images/product-notice-silver-cork.jpg',
       moq: '50 pcs',
       leadTime: '20-25 Days',
       features: [
-        'Premium Dense Grey Felt Interior Absorbs Acoustic Noise & Holds Push Pins',
-        'Outdoor Weatherproof Gasket Seal Resists Rain, Wind & Moisture Intrusion',
-        'Lockable Shatterproof Tempered Glass Door for Public Safety & Anti-Tampering',
-        'Anodized Black Aluminum Extrusion with Concealed Wall Fasteners'
+        'Self-Healing Dense Natural Cork Pinboard Surface Stays Flawless',
+        'Lockable Tempered Glass Door with 2 Keys Protects from Weather & Tampering',
+        'Weatherproof Aluminum Frame Construction for Indoor and Outdoor Use',
+        'Flexible Mounting: Can Be Installed Horizontally or Vertically'
       ],
       specs: {
-        'Standard Dimensions': '36" x 24" (90 x 60 cm) / Accommodates up to 6 x A4 sheets',
-        'Interior Surface': 'Acoustic-grade non-fading grey felt over high-density backing',
-        'Door Glazing': '3.2mm architectural automotive tempered safety glass',
-        'Frame Profile': 'Corrosion-resistant powder-coated black extruded aluminum',
-        'Weatherproofing': 'Perimeter rubber compression seal with drainage weep holes'
+        'Standard Dimensions': '36" x 24" (approx. 90 x 60 cm)',
+        'Core Surface': '100% premium dense self-healing natural cork board',
+        'Door Construction': 'Tempered safety glass door on continuous hinge with dual cylinder keys',
+        'Frame Construction': 'Weatherproof heavy-duty aluminum frame with perimeter weather-seal gaskets',
+        'Mounting Kit': 'Complete wall-mounting hardware included (horizontal/vertical orientation)'
       }
     },
     {
@@ -342,72 +319,49 @@ export default function ProductMatrix({ onSelectProductForRfq }) {
       }
     },
     {
-      id: 'kbw-notice-silver-cork',
-      category: 'notice',
-      categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Lockable Outdoor Enclosed Bulletin Board with Natural Cork (Silver Frame)',
-      code: 'KBW-ENC-3624-ALUM',
-      image: '/assets/images/product-notice-silver-cork.jpg',
-      moq: '50 pcs',
-      leadTime: '20-25 Days',
-      features: [
-        'Satin Silver Anodized Aluminum Housing with Heavy Weather-Resistant Seals',
-        '100% Natural Self-Healing Resilient Cork Holds Pins Firmly',
-        'Lockable Swing-Open Glass Door with Dual Security Keys',
-        'Engineered for Apartment Entrances, Churches, Schools & Commercial Buildings'
-      ],
-      specs: {
-        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 5 x A4 capacity',
-        'Bulletin Core': 'High-density natural Portuguese cork with anti-warp composite backing',
-        'Door Construction': 'Tempered safety glass door on continuous stainless piano hinge',
-        'Frame Finish': 'Commercial satin silver anodized aluminum with rounded corner safety caps',
-        'Installation': 'Internal pre-drilled holes for concealed, tamperproof wall anchoring'
-      }
-    },
-    {
       id: 'kbw-notice-led-illuminated',
       category: 'notice',
       categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Concealed LED Illuminated Enclosed Bulletin Board with Glass Door',
+      name: '36"x24" Concealed LED Enclosed Bulletin Board with Locking Tempered Glass Door',
       code: 'KBW-LED-ENC-3624',
       image: '/assets/images/product-notice-led-illuminated.jpg',
       moq: '50 pcs',
       leadTime: '20-25 Days',
       features: [
-        'Concealed Energy-Efficient LED Lighting for 24/7 Day & Night High Visibility',
-        'Lockable Tempered Glass Door with Weatherproof Aluminum Housing',
-        'Uniform Edge-Lit Light Diffusion Eliminates Hotspots on Displayed Posters',
-        'Safe Low-Voltage 12V DC Power Supply with Waterproof Cable Pass-Through'
+        'Concealed Seamless Frame LED Lighting with Power Cord & Plug (No Electrician Needed)',
+        'Dense Self-Healing Natural Cork Board Seamlessly Conceals Repeated Pin Holes',
+        'Lockable Tempered Glass Door with 2 Keys to Deter Vandalism & Tampering',
+        'Durable Silver Aluminum Frame with Sleek Mitered Corners & Hidden Hanging System'
       ],
       specs: {
-        'Standard Dimensions': '36" x 24" (90 x 60 cm)',
-        'Lighting System': 'Concealed IP65 waterproof perimeter LED strip (6000K daylight white)',
-        'Power Supply': 'UL/CE certified 12V DC adapter with waterproof screw connector',
-        'Door & Lock': 'Hinged tempered safety glass door with dual cylinder security keys',
-        'Interior Surface': 'Pin-friendly dense bulletin board with even light distribution'
+        'Standard Dimensions': '36" x 24" (approx. 90 x 60 cm)',
+        'Lighting System': 'Concealed frame-integrated LED lighting with plug-and-play power cord',
+        'Door Construction': 'Tempered safety glass door panel with precision cylinder lock & 2 keys',
+        'Surface Material': 'Self-healing dense natural cork resilient pin surface',
+        'Installation': 'Hidden hanging bracket system with complete mounting hardware included'
       }
     },
     {
       id: 'kbw-notice-acrylic-door',
       category: 'notice',
       categoryName: 'Notice Case & Showcase',
-      name: '36"x24" Wall-Mounted Indoor Noticeboard with Clear Acrylic Locking Door (5 x A4)',
+      name: '36"x24" Wall-Mounted Enclosed Cork Noticeboard with Clear Acrylic Locking Door (5 x A4)',
       code: 'KBW-ENC-3624-ACRYLIC',
       image: '/assets/images/product-notice-acrylic-door.jpg',
       moq: '50 pcs',
       leadTime: '15-20 Days',
       features: [
-        'Lightweight Shatterproof Clear Optical Acrylic Locking Swing Door',
-        'High-Density Natural Cork Surface Displays Up to 5 Standard A4 Documents',
-        'Slim-Profile Aluminum Alloy Frame Ideal for High-Traffic School & Office Hallways',
-        'Tamper-Resistant Key Lock Prevents Unauthorized Flyer or Notice Removal'
+        'Sturdy Self-Healing Cork Surface Seamlessly Conceals Pin & Tack Holes',
+        'Durable Clear Acrylic Swinging Door with Precision Key-Locking Mechanism (2 Keys)',
+        'Generous 34" x 22" Usable Interior Space Accommodating Up to 5 Standard A4 Sheets',
+        '0.4" Thick Felt-Backed Cork Core in a Sleek, Lightweight Aluminum Frame'
       ],
       specs: {
-        'Standard Dimensions': '36" x 24" (90 x 60 cm) / 5 x A4 capacity',
-        'Door Material': '3mm high-impact optical-grade clear acrylic',
-        'Core Surface': 'Resilient self-healing natural cork board with rigid MDF infill',
-        'Lock Spec': 'Cam lock cylinder with 2 matching nickel-plated keys',
-        'Frame Material': 'Satin matte silver anodized aluminum alloy'
+        'Total Frame Dimensions': '36" x 24" (90 x 60 cm)',
+        'Usable Display Area': '34" x 22" (86 x 56 cm) / 5 x A4 sheet capacity',
+        'Door Construction': 'Durable shatterproof clear optical acrylic swinging door with key lock',
+        'Core Thickness': 'Up to 0.4" (10mm) dense self-healing cork with resilient felt backing',
+        'Mounting Kit': 'Included comprehensive mounting tools and anchors for simple installation'
       }
     }
   ];
