@@ -1,0 +1,4 @@
+# Cloudflare Pages normalizes /x.html -> /x with a 308, which breaks Google Search
+# Console HTML-file verification (GSC requires a direct 200 at the exact .html path).
+# This rewrite serves the verification file content at its exact path with status 200.
+/google1e11f64ae4cd6539.html  /google1e11f64ae4cd6539  200
