@@ -30,7 +30,7 @@ export default function ProductsPage() {
       />
       <JsonLd data={itemListSchema} />
       <TrustBar />
-      <ProductMatrix />
+      <ProductMatrix heading="Whiteboard Products" headingTag="h1" />
       <RfqFunnel />
     </>
   );

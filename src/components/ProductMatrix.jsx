@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowRight, Layers, Sliders, X } from 'lucide-react';
 import { products, categories } from '../data/products';
 
-export default function ProductMatrix({ onSelectedForContact, limit, showTabs = true }) {
+export default function ProductMatrix({ onSelectedForContact, limit, showTabs = true, heading = 'Product Matrix', headingTag = 'h2' }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('all');
   const [activeSpecProduct, setActiveSpecProduct] = useState(null);
@@ -28,7 +28,7 @@ export default function ProductMatrix({ onSelectedForContact, limit, showTabs = 
           <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-accent mb-3">
             <Layers className="w-4 h-4" /> Official Catalog
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-primary tracking-tight mb-3">Product Matrix</h2>
+          {React.createElement(headingTag, { className: 'text-3xl sm:text-4xl font-semibold text-primary tracking-tight mb-3' }, heading)}
           <p className="text-sm text-secondary">Direct from the Heshan City Jinbowen factory floor — every model is manufactured in-house.</p>
         </div>
 
