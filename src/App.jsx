@@ -5,6 +5,7 @@ import TrustBar from './components/TrustBar';
 import FactoryTour from './components/FactoryTour';
 import ProductMatrix from './components/ProductMatrix';
 import ApplicationScenarios from './components/ApplicationScenarios';
+import Faq from './components/Faq';
 import RfqFunnel from './components/RfqFunnel';
 import Footer from './components/Footer';
 import { MessageSquare, ArrowUp, PhoneCall } from 'lucide-react';
@@ -28,6 +29,7 @@ export default function App() {
         <ProductMatrix onSelectProductForRfq={setSelectedProduct} />
         <ApplicationScenarios />
         <FactoryTour />
+        <Faq />
         <RfqFunnel selectedProductFromMatrix={selectedProduct} />
       </main>
       <Footer />
