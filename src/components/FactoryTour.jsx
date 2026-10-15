@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { Factory, Eye, ShieldCheck, Film, Video, ArrowRight, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Factory, ShieldCheck, Film, Video, ArrowRight, X } from 'lucide-react';
 
 export default function FactoryTour() {
   const [activePhoto, setActivePhoto] = useState(null);
+
+  useEffect(() => {
+    if (!activePhoto) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setActivePhoto(null);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [activePhoto]);
 
   const factoryGallery = [
     {
       id: 'gate',
       title: 'Heshan Factory Main Gate',
       subtitle: 'Headquarters & Logistics Entrance',
-      image: '/assets/images/factory-gate.jpg',
+      image: '/assets/images/factory-gate.webp',
       tag: 'Campus Entrance',
       desc: 'Located in the core industrial corridor of Heshan City, Guangdong, with direct highway access to Shenzhen and Guangzhou international shipping ports.'
     },
@@ -33,7 +42,7 @@ export default function FactoryTour() {
       id: 'warehouse-raw',
       title: 'Raw Material Coil Warehouse',
       subtitle: 'Heavy-Duty Steel & Lacquer Coils',
-      image: '/assets/images/factory-warehouse-raw.png',
+      image: '/assets/images/factory-warehouse-raw.webp',
       tag: 'Raw Materials',
       desc: 'Massive stock of premium cold-rolled steel coils, galvanized backing sheets, and aviation-grade aluminum profiles ensuring prompt delivery and price stability.'
     },
@@ -57,7 +66,7 @@ export default function FactoryTour() {
       id: 'workshop-2',
       title: 'Continuous PUR Panel Lamination',
       subtitle: 'Automated Adhesive Spraying & Roller Gluing Equipment',
-      image: '/assets/images/factory-workshop-3.png',
+      image: '/assets/images/factory-workshop-3.webp',
       video: '/assets/videos/honeycomb-gluing.mp4',
       tag: 'Automated Gluing',
       desc: 'Equipped with automated adhesive spraying and honeycomb core roller-gluing machinery, ensuring uniform PUR bonding for high-flatness whiteboard sandwich panels.'
@@ -104,54 +113,46 @@ export default function FactoryTour() {
         {/* Complete Factory Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {factoryGallery.map((item) => (
-            <div
+            <article
               key={item.id}
-              onClick={() => setActivePhoto(item)}
-              className="bg-slate-50 rounded-lg border border-border overflow-hidden hover:shadow-lg hover:border-slate-400 transition-all cursor-pointer group flex flex-col justify-between"
+              className="bg-white border border-border overflow-hidden hover:border-[#aeb5b3] transition-colors group flex flex-col"
+              data-component="factory-card"
             >
-              <div>
-                <div className="relative aspect-[4/3] bg-slate-200 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setActivePhoto(item)}
+                className="w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent"
+                aria-label={`${item.video ? 'Watch video and view details for' : 'View details for'} ${item.title}`}
+              >
+                <div className="relative aspect-[4/3] bg-[#f2f3f1] overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:opacity-95 transition-opacity duration-200"
                     loading="lazy"
                   />
-                  <div className="absolute top-2.5 left-2.5 bg-primary/80 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded">
+                  <div className="absolute top-3 left-3 bg-white/95 text-[#42494c] text-[11px] font-semibold px-2.5 py-1 border border-white/80">
                     {item.tag}
                   </div>
                   {item.video && (
-                    <div className="absolute top-2.5 right-2.5 bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded shadow flex items-center gap-1">
+                    <div className="absolute top-3 right-3 bg-accent text-white text-[10px] font-bold px-2.5 py-1 flex items-center gap-1.5">
                       <Film className="w-3 h-3" />
                       <span>Video</span>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                    <span className="px-3 py-1 bg-black/60 rounded text-xs font-medium flex items-center gap-1">
-                      {item.video ? <Film className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                      <span>{item.video ? 'Watch Process Video' : 'View Full Resolution'}</span>
-                    </span>
-                  </div>
                 </div>
 
-                <div className="p-4">
-                  <h3 className="text-sm font-bold text-primary group-hover:text-accent transition-colors line-clamp-1">
+                <div className="p-4 sm:p-5">
+                  <h3 className="text-sm sm:text-base font-semibold text-primary group-hover:text-accent transition-colors line-clamp-2 min-h-[2.5rem]">
                     {item.title}
                   </h3>
-                  <div className="text-[11px] font-semibold text-slate-500 mt-0.5 mb-2">
-                    {item.subtitle}
+                  <div className="mt-3 min-h-11 inline-flex items-center gap-2 text-sm text-accent font-semibold">
+                    <span>{item.video ? 'Video & Details' : 'Details'}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <p className="text-xs text-secondary line-clamp-2 leading-relaxed">
-                    {item.desc}
-                  </p>
                 </div>
-              </div>
-
-              <div className="px-4 pb-3 pt-0 text-[11px] text-accent font-semibold flex items-center gap-1">
-                <span>{item.video ? 'Watch Roller-Gluing Video' : 'Inspect Facility Details'}</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
+              </button>
+            </article>
           ))}
         </div>
 
@@ -181,13 +182,17 @@ export default function FactoryTour() {
           onClick={() => setActivePhoto(null)}
         >
           <div
-            className="bg-white rounded-lg max-w-4xl w-full overflow-hidden shadow-2xl relative"
+            className="bg-white max-w-4xl w-full overflow-hidden shadow-2xl relative border border-border"
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="factory-detail-title"
           >
             <button
               type="button"
               onClick={() => setActivePhoto(null)}
-              className="absolute top-3 right-3 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-full z-10"
+              className="absolute top-3 right-3 w-11 h-11 bg-primary/85 hover:bg-primary text-white rounded-full z-10 inline-flex items-center justify-center"
+              aria-label="Close factory details"
             >
               <X className="w-5 h-5" />
             </button>
@@ -212,22 +217,25 @@ export default function FactoryTour() {
               )}
             </div>
 
-            <div className="p-6 bg-white">
-              <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mb-1">
+            <div className="p-5 sm:p-7 bg-white">
+              <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-accent uppercase tracking-[0.08em] mb-3">
                 <span>{activePhoto.tag}</span>
-                <span>•</span>
+                <span aria-hidden="true">•</span>
                 <span>Heshan City Jinbowen Industrial</span>
               </div>
-              <h3 className="text-xl font-bold text-primary mb-2">
-                {activePhoto.title} — {activePhoto.subtitle}
+              <h3 id="factory-detail-title" className="text-xl sm:text-2xl font-semibold text-primary">
+                {activePhoto.title}
               </h3>
-              <p className="text-sm text-secondary leading-relaxed">
+              <div className="mt-2 text-sm font-semibold text-[#596164]">
+                {activePhoto.subtitle}
+              </div>
+              <p className="mt-4 text-sm sm:text-base text-secondary leading-relaxed max-w-3xl">
                 {activePhoto.desc}
               </p>
               {activePhoto.video && (
-                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded bg-amber-50 text-amber-900 text-xs font-semibold border border-amber-200">
-                  <Film className="w-4 h-4 text-amber-600" />
-                  <span>On-Site Process Video: Automated Honeycomb Core Roller-Gluing & Lamination</span>
+                <div className="mt-4 inline-flex items-center gap-2 px-3 py-2 bg-[#e4eff1] text-[#124c5c] text-xs font-semibold border border-[#c8dde1]">
+                  <Film className="w-4 h-4" />
+                  <span>On-site video: honeycomb core roller-gluing and lamination</span>
                 </div>
               )}
             </div>

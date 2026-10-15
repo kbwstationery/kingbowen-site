@@ -5,19 +5,19 @@ export default function ApplicationScenarios() {
     {
       title: 'Meeting collaboration',
       caption: 'Turn plans, workshops and team decisions into a shared visual workspace.',
-      image: '/assets/images/scenario-meeting-collaboration.png',
+      image: '/assets/images/scenario-meeting-collaboration.webp',
       alt: 'Colleagues collaborating with a wall-mounted whiteboard in a meeting room'
     },
     {
       title: 'Classroom teaching',
       caption: 'A clear, durable writing surface for everyday lessons and group learning.',
-      image: '/assets/images/scenario-classroom-teaching.png',
+      image: '/assets/images/scenario-classroom-teaching.webp',
       alt: 'Teacher and students using a magnetic whiteboard in a classroom'
     },
     {
       title: 'Mobile discussion',
       caption: 'Move ideas between teams with a stable double-sided rolling whiteboard.',
-      image: '/assets/images/scenario-mobile-discussion.png',
+      image: '/assets/images/scenario-mobile-discussion.webp',
       alt: 'Team discussing ideas around a mobile rolling whiteboard'
     }
   ];

@@ -34,7 +34,7 @@ export default function Hero() {
 
           <div className="lg:col-span-7 min-h-[340px] lg:min-h-[440px] bg-slate-100 overflow-hidden">
             <img
-              src="/assets/images/scenario-meeting-collaboration.png"
+              src="/assets/images/scenario-meeting-collaboration.webp"
               alt="Team collaborating around a magnetic whiteboard in a modern meeting room"
               className="w-full h-full object-cover"
             />
