@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer() {
@@ -17,10 +18,11 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold">Explore</h3>
             <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-white/65">
-              <a href="#products" className="hover:text-white">Products</a>
-              <a href="#applications" className="hover:text-white">In use</a>
-              <a href="#factory-tour" className="hover:text-white">Factory</a>
-              <a href="#rfq-inquiry" className="hover:text-white">Inquiry</a>
+              <Link to="/products" className="hover:text-white">Products</Link>
+              <Link to="/factory" className="hover:text-white">Factory</Link>
+              <Link to="/oem-odm" className="hover:text-white">OEM / ODM</Link>
+              <Link to="/certifications" className="hover:text-white">Certifications</Link>
+              <Link to="/contact" className="hover:text-white">Contact</Link>
             </div>
           </div>
 

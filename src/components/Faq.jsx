@@ -1,7 +1,7 @@
 import React from 'react';
 import { HelpCircle } from 'lucide-react';
 
-const faqs = [
+export const faqs = [
   {
     q: 'Does Kingbowen provide custom OEM/ODM whiteboard manufacturing?',
     a: 'Yes. Kingbowen provides full OEM/ODM services including bespoke dimensions, custom aluminum frame profiles and anodized finishes, laser logo engraving, custom silk-screen grid and planner printing, and ISTA-3A drop-tested retail packaging.'

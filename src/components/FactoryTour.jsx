@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Factory, ShieldCheck, Film, Video, ArrowRight, X } from 'lucide-react';
 
 export default function FactoryTour() {
@@ -167,10 +168,10 @@ export default function FactoryTour() {
               <p className="text-sm text-secondary mt-1">See panel cutting, automated gluing, lamination and assembly.</p>
             </div>
           </div>
-          <a href="#rfq-inquiry" className="min-h-12 px-5 bg-primary hover:bg-[#334247] text-white text-sm font-bold flex items-center gap-2 transition-colors">
+          <Link to="/contact" className="min-h-12 px-5 bg-primary hover:bg-[#334247] text-white text-sm font-bold flex items-center gap-2 transition-colors">
             Request factory files
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
 
       </div>

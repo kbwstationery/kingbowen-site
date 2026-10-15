@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function Hero() {
@@ -17,13 +18,13 @@ export default function Hero() {
               Mobile, wall-mounted and custom writing boards for distributors, offices and schools.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="#products" className="min-h-12 px-6 bg-white text-primary font-bold inline-flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors">
+              <Link to="/products" className="min-h-12 px-6 bg-white text-primary font-bold inline-flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors">
                 Explore products
                 <ArrowRight className="w-4 h-4" />
-              </a>
-              <a href="#rfq-inquiry" className="min-h-12 px-6 border border-white/60 text-white font-bold inline-flex items-center justify-center hover:bg-white/10 transition-colors">
+              </Link>
+              <Link to="/contact" className="min-h-12 px-6 border border-white/60 text-white font-bold inline-flex items-center justify-center hover:bg-white/10 transition-colors">
                 Request a quote
-              </a>
+              </Link>
             </div>
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/80">
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> OEM/ODM</span>

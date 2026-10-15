@@ -1,52 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TrustBar from './components/TrustBar';
-import FactoryTour from './components/FactoryTour';
-import ProductMatrix from './components/ProductMatrix';
-import ApplicationScenarios from './components/ApplicationScenarios';
-import Faq from './components/Faq';
-import RfqFunnel from './components/RfqFunnel';
 import Footer from './components/Footer';
-import { MessageSquare, ArrowUp, PhoneCall } from 'lucide-react';
+import { routeElements } from './routes';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function NotFound() {
+  return (
+    <div className="max-w-3xl mx-auto px-6 py-24 text-center">
+      <h1 className="text-3xl font-bold text-primary">Page not found</h1>
+      <p className="mt-3 text-secondary">The page you are looking for does not exist.</p>
+      <a href="/" className="mt-6 inline-block bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-[#334247] transition-colors">
+        Back to home
+      </a>
+    </div>
+  );
+}
+
+function BackToTop() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  if (!show) return null;
+  return (
+    <button
+      type="button"
+      aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary text-white shadow-lg flex items-center justify-center hover:bg-[#334247] transition-colors"
+    >
+      <ArrowUp className="w-5 h-5" />
+    </button>
+  );
+}
 
 export default function App() {
-  const [selectedProduct, setSelectedProduct] = useState('');
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col bg-[#fbfbfa] text-foreground">
+    <div className="min-h-screen bg-canvas text-primary antialiased" data-component="app-shell">
+      <ScrollToTop />
       <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <TrustBar />
-        <ProductMatrix onSelectProductForRfq={setSelectedProduct} />
-        <ApplicationScenarios />
-        <FactoryTour />
-        <Faq />
-        <RfqFunnel selectedProductFromMatrix={selectedProduct} />
+      <main>
+        <Routes>
+          {routeElements.map((r) => (
+            <Route key={r.path} path={r.path} element={r.element} />
+          ))}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
-
-      <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-2.5">
-        <a href="https://wa.me/8618127527882" target="_blank" rel="noopener noreferrer" aria-label="Contact Kingbowen on WhatsApp" className="w-12 h-12 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors">
-          <PhoneCall className="w-5 h-5" />
-        </a>
-        <a href="#rfq-inquiry" aria-label="Open wholesale inquiry form" className="w-12 h-12 bg-accent hover:bg-accent-hover text-white rounded-full shadow-lg flex items-center justify-center transition-colors">
-          <MessageSquare className="w-5 h-5" />
-        </a>
-        {showBackToTop && (
-          <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className="w-12 h-12 bg-white text-primary border border-border rounded-full shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors">
-            <ArrowUp className="w-5 h-5" />
-          </button>
-        )}
-      </div>
+      <BackToTop />
     </div>
   );
 }
